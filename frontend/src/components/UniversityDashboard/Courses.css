@@ -1,0 +1,106 @@
+/* Wrapper */
+.ud-courses-page {
+  padding: 12px;
+}
+
+/* Title */
+.ud-courses-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* Card */
+.ud-courses-card {
+  background: #fffefc;
+  border: 1px solid #fcd34d;
+  border-radius: 6px;
+  padding: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Table */
+.ud-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.7rem;
+}
+
+.ud-data-table thead {
+  background: #1e293b;
+  color: #fcd34d;
+}
+
+.ud-data-table th,
+.ud-data-table td {
+  padding: 4px 6px;
+  border-bottom: 1px solid #fcd34d;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* Hover */
+.ud-data-table tbody tr:hover td {
+  background: #fef9c3;
+}
+
+/* Actions inline */
+.ud-action-buttons {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.ud-action-buttons button {
+  padding: 3px 6px;
+  font-size: 0.65rem;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #f3f4f6;
+  border: 1px solid #ddd;
+}
+
+.ud-action-buttons button:hover {
+  background: #e5e7eb;
+}
+
+/* Apply button */
+.ud-courses-apply-btn {
+  padding: 3px 6px;
+  font-size: 0.65rem;
+  background: #fcd34d;
+  color: #000;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.ud-courses-apply-btn:hover {
+  background: #fde68a;
+}
+
+/* Upload button */
+.ud-upload-section {
+  margin-bottom: 8px;
+  text-align: right;
+}
+
+.ud-upload-btn {
+  background: #2563eb;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.ud-upload-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Loading */
+.ud-courses-loading {
+  font-size: 0.8rem;
+  text-align: center;
+  margin: 10px 0;
+}

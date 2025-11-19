@@ -1,0 +1,60 @@
+.agent-dashboard {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.ad-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.ad-main {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+a, button {
+  transition: color 0.2s ease;
+}
+
+.ad-footer {
+  margin-top: auto; /* pushes footer to bottom */
+  padding: 0.8rem 0;
+  font-size: 0.75rem;
+  text-align: center;
+  color: #000;
+  border-top: 1px solid #d4af37;
+  background: #fefce8;
+}
+
+@media (max-width: 900px) {
+  .ad-sidebar {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    height: calc(100vh - 56px);
+    z-index: 200;
+    transform: translateX(-260px);
+    transition: transform 0.3s ease;
+  }
+
+  .ad-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .ad-body {
+    flex-direction: column;
+  }
+
+  .ad-main {
+    padding: 1rem 0.75rem;
+  }
+}

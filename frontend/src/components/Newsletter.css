@@ -1,0 +1,73 @@
+.newsletter-section {
+  padding: 1.5rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.trending-header {
+  background: linear-gradient(90deg, #141f33);
+  color: white;
+  padding: 0.8rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 1.4rem; /* reduced from 2.5rem */
+}
+
+.marquee-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  border-radius: 10px;
+  margin: 0.8rem 0;
+  background-color: #f3f4f6;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.marquee-wrapper.marquee-upcoming {
+  background-color: #f3f4f6;
+}
+
+.marquee {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 15s linear infinite;
+}
+
+.marquee span {
+  display: inline-block;
+  font-size: 1rem; /* reduced from 2rem */
+  font-weight: 300;
+  letter-spacing: 0.5px; /* slightly tighter */
+  color: #111;
+  padding: 0.6rem 1rem; /* reduced padding */
+}
+
+.marquee-wrapper.marquee-upcoming span {
+  color: #F59E0B;
+  font-weight: 400;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .trending-header {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+  .marquee span {
+    font-size: 1.2rem;
+  }
+}

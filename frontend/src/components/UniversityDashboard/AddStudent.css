@@ -1,0 +1,143 @@
+/* Modal Overlay */
+.add-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.add-modal-content {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 800px; /* Reduced from 1200px to 800px */
+  width: 90%;        /* Responsive width */
+  max-height: 90vh;  /* Avoid overflow on small screens */
+  overflow-y: auto;  /* Scroll if content is too tall */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Close Button */
+.add-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+/* Page container */
+.ud-studentform-page {
+  max-width: 800px; /* Reduced from 1200px to 800px */
+  width: 95%;       /* Make it responsive */
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #111827;
+}
+
+/* Main Title */
+.ud-studentform-title {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1f2937; /* dark gray */
+}
+
+/* Form Styles */
+.ud-studentform-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Section Headings */
+.ud-studentform-section {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #2563eb; /* blue */
+  border-bottom: 2px solid #e5e7eb; /* light gray */
+  padding-bottom: 0.25rem;
+}
+
+/* Labels */
+.ud-studentform-label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+/* Inputs */
+.ud-studentform-input,
+.ud-studentform-select {
+  margin-top: 0.3rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ud-studentform-input:focus,
+.ud-studentform-select:focus {
+  outline: none;
+  border-color: #3b82f6; /* blue-500 */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Buttons */
+.ud-studentform-btn-primary {
+  background-color: #3b82f6; /* blue-500 */
+  color: #ffffff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 1rem;
+}
+
+.ud-studentform-btn-primary:hover {
+  background-color: #2563eb; /* blue-600 */
+}
+
+.ud-studentform-btn-link {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 1rem;
+  text-decoration: underline;
+}
+
+.ud-studentform-btn-link:hover {
+  color: #1e40af; /* blue-800 */
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .ud-studentform-page {
+    padding: 1rem;
+    margin: 1rem;
+  }
+}

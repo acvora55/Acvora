@@ -1,0 +1,111 @@
+/* ===== Header ===== */
+.ad-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #1a202c); /* subtle gradient */
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb; /* softer line */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06); /* softer, premium shadow */
+  z-index: 100;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #111827; /* charcoal text */
+}
+
+/* Left Section */
+.ad-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Buttons (icons) */
+.ad-icon-btn {
+  background: none;
+  border: none;
+  color: darkgray; /* slate gray */
+  cursor: pointer;
+  padding: 0.35rem 0.5rem;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  font-size: 0.9rem;
+}
+.ad-icon-btn:hover,
+.ad-icon-btn:focus {
+  background-color: #ecc94b;
+  color: darkgray; /* gold accent */
+}
+
+/* Sidebar toggle svg */
+.ad-sidebar-toggle svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+/* Search */
+.ad-search input {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
+  color: #111827;
+  background-color: #fff;
+  width: 200px;
+  transition: all 0.25s ease;
+}
+.ad-search input:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+}
+
+/* Center */
+.ad-header-center {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-grow: 1;
+  justify-content: center;
+}
+.ad-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: darkgray;
+  letter-spacing: -0.3px;
+}
+
+.ad-logo {
+  height: 22px;
+  object-fit: contain;
+}
+
+.ad-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.ad-theme-toggle {
+  font-size: 1rem;
+  color: darkgray;
+  transition: color 0.25s ease;
+}
+.ad-theme-toggle:hover {
+  color: #d4af37;
+}
+.ad-profile {
+  background: darkgray;
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.ad-profile:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}

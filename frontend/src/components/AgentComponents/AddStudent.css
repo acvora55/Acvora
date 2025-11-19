@@ -1,0 +1,286 @@
+/* ===== Modal ===== */
+.add-stud-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.add-stud-modal-content {
+  background: #e8e8e8; /* soft yellow background */
+  border-radius: 10px;
+  padding: 0.8rem;
+  max-width: 600px;
+  width: 95%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  position: relative;
+  color: #111;
+  font-size: 0.85rem;
+}
+
+/* Custom scrollbar */
+.add-stud-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+.add-stud-modal-content::-webkit-scrollbar-thumb {
+  background: #facc15;
+  border-radius: 6px;
+}
+.add-stud-modal-content::-webkit-scrollbar-thumb:hover {
+  background: #eab308;
+}
+.add-stud-modal-content {
+  scrollbar-width: thin;
+  scrollbar-color: #facc15 transparent;
+}
+
+.add-stud-modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #111;
+  font-size: 1.1rem;
+  transition: transform 0.2s;
+}
+.add-stud-modal-close:hover {
+  transform: scale(1.1);
+  color: #d97706;
+}
+.add-stud-modal-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===== Stepper ===== */
+.add-stud-stepper.add-stud-horizontal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 auto 1.2rem;
+  max-width: 320px;
+}
+
+.add-stud-step {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #e8e8e8;
+  border: 2px solid #1a202c;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.add-stud-step.active {
+  background: #facc15;
+  border-color: #1a202c;
+  transform: scale(1.05);
+}
+.add-stud-step.completed {
+  background: #84cc16;
+  border-color: #84cc16;
+  color: #fff;
+}
+.add-stud-step-line {
+  flex: 1;
+  height: 2px;
+  background: #1a202c;
+  border-radius: 1px;
+}
+
+/* ===== Form base ===== */
+.add-stud-student-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.add-stud-form-section {
+  background: #fffdf3;
+  border-radius: 6px;
+  padding: 0.8rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #1a202c;
+}
+.add-stud-form-section-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 0.8rem;
+}
+
+/* Inputs */
+.add-stud-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.8rem;
+}
+.add-stud-form-group label {
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: #111;
+}
+.add-stud-form-group label.required::after {
+  content: '*';
+  color: #ef4444;
+  margin-left: 0.2rem;
+}
+.add-stud-input {
+  width: 100%;
+  padding: 0.45rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 5px;
+  border: 1px solid #1a202c;
+  background: #fff;
+  color: #111;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.add-stud-input:focus {
+  border-color: #f59e0b;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.3);
+}
+
+/* ===== Buttons ===== */
+.add-stud-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+.add-stud-btn {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #fcd34d;
+  color: #111;
+}
+.add-stud-btn:hover {
+  background: #fef3c7;
+}
+.add-stud-btn-primary {
+  background: #facc15;
+  color: #111;
+  border: none;
+}
+.add-stud-btn-primary:hover {
+  background: #eab308;
+}
+
+/* ===== Upload UI ===== */
+.add-stud-upload-tile {
+  border: 1px dashed #fcd34d;
+  border-radius: 6px;
+  padding: 0.6rem;
+  background: #fffdf3;
+  transition: background 0.2s;
+}
+.add-stud-upload-tile.drag-active {
+  background: #fef9c3;
+}
+.add-stud-file-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: #fef3c7;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  border: 1px solid #fcd34d;
+}
+.add-stud-chip-action {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid #fcd34d;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Pills / Chips ===== */
+.add-stud-pill {
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border: 1px solid #fcd34d;
+  background: #fff;
+  color: #111;
+}
+.add-stud-pill.selected {
+  background: #facc15;
+  color: #111;
+  border-color: #facc15;
+}
+
+/* ===== Review ===== */
+.add-stud-review-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.add-stud-review-section h3 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #111;
+  border-bottom: 1px solid #fcd34d;
+  padding-bottom: 0.2rem;
+}
+.add-stud-review-section p {
+  font-size: 0.75rem;
+  margin: 0.2rem 0;
+}
+.add-stud-edit-btn {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #fcd34d;
+  background: #fff;
+  cursor: pointer;
+}
+.add-stud-edit-btn:hover {
+  background: #facc15;
+  color: #111;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .add-stud-modal-content {
+    padding: 0.6rem;
+  }
+  .add-stud-form-section {
+    padding: 0.6rem;
+  }
+}
+@media (max-width: 480px) {
+  .add-stud-modal-content {
+    padding: 0.5rem;
+  }
+  .add-stud-input {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.7rem;
+  }
+  .add-stud-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+  }
+}

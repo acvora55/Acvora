@@ -1,0 +1,366 @@
+/* Page container */
+.pi-partner-institutes-content {
+  padding: 1rem clamp(0.8rem, 2vw, 1.25rem);
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  background: #faf9f6; /* clean white main background */
+  color: #1f2937; /* slate-800 */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.75rem;
+  border-radius: 10px;
+}
+
+/* Header */
+.pi-partner-institutes-content .pi-partner-institutes-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: end;
+  margin-bottom: 1rem;
+}
+.pi-partner-institutes-content .pi-partner-institutes-header h2 {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 700;
+  color: #1e293b; /* deep navy */
+  margin: 0;
+}
+.pi-partner-institutes-content .pi-header-subtitle {
+  color: #6b7280; /* muted gray */
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
+}
+.pi-partner-institutes-content .pi-partner-institutes-actions {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Input with icon */
+.pi-partner-institutes-content .pi-input-with-icon {
+  position: relative;
+  width: 220px;
+}
+.pi-partner-institutes-content .pi-input-with-icon .pi-search-input {
+  width: 100%;
+  padding: 0.45rem 0.6rem 0.45rem 1.8rem;
+  border: 1px solid #d4af37; /* gold border */
+  border-radius: 8px;
+  background: #f9fafb;
+  color: #111827;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+}
+.pi-partner-institutes-content .pi-input-with-icon svg {
+  position: absolute;
+  left: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.6;
+  font-size: 0.8rem;
+}
+.pi-partner-institutes-content .pi-search-input::placeholder {
+  color: #9ca3af;
+}
+.pi-partner-institutes-content .pi-search-input:focus {
+  outline: none;
+  border-color: #d4af37; /* gold */
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.25); /* gold glow */
+}
+
+/* Buttons */
+.pi-partner-institutes-content .pi-action-button {
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.2;
+  border: none;
+}
+.pi-partner-institutes-content .pi-action-button.pi-primary {
+  background: #1e293b; /* deep navy */
+  color: #fff;
+}
+.pi-partner-institutes-content .pi-action-button.pi-primary:hover {
+  background: #d4af375c;
+  transform: translateY(-1px);
+}
+.pi-partner-institutes-content .pi-action-button.pi-secondary {
+  background: #f3f4f6; /* light gray */
+  color: #111827;
+}
+.pi-partner-institutes-content .pi-action-button.pi-secondary:hover {
+  background: #d4af375c;
+  transform: translateY(-1px);
+}
+
+/* Table card */
+.pi-partner-institutes-content .pi-ad-table-card {
+  background: #faf9f6;
+  padding: 0.8rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  color: #111827;
+}
+.pi-partner-institutes-content .pi-ad-table-card h3 {
+  margin: 0 0 0.6rem 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e293b; /* deep navy */
+}
+
+/* Scrollable table */
+.pi-partner-institutes-content .pi-table-scroll {
+  overflow: auto;
+  border-radius: 6px;
+  border: 1px solid #1e293b;
+}
+
+/* Table */
+.pi-partner-institutes-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.7rem;
+  background: #fff;
+  color: #111827;
+}
+.pi-partner-institutes-content table th,
+.pi-partner-institutes-content table td {
+  padding: 0.5rem 0.6rem;
+  text-align: left;
+  border-bottom: 1px solid #f3f4f6;
+  color: #374151;
+}
+.pi-partner-institutes-content table thead th {
+  position: sticky;
+  top: 0;
+  background: #1e293b;
+  font-weight: 700;
+  color: #d4af37;
+}
+
+/* Row Colors */
+.pi-partner-institutes-content table tbody tr:nth-child(even) td {
+  background: #fff;
+}
+.pi-partner-institutes-content table tbody tr:nth-child(odd) td {
+  background: #f9fafb;
+}
+
+/* Row interactions */
+.pi-partner-institutes-content .pi-institute-row {
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.pi-partner-institutes-content .pi-institute-row:hover td {
+  background: #ecc94b !important; /* soft gold hover */
+}
+.pi-partner-institutes-content .pi-institute-row:focus-within td {
+  outline: 2px solid #d4af37; /* gold outline */
+  outline-offset: -2px;
+}
+
+/* Avatar + name */
+.pi-partner-institutes-content .pi-cell-name {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.pi-partner-institutes-content .pi-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: #1e293b; /* navy */
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  font-size: 0.6rem;
+}
+
+/* Chips */
+.pi-partner-institutes-content .pi-chip {
+  padding: 0.2rem 0.4rem;
+  margin: 0 4px;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  background: #f3f4f6;
+  color: #111827;
+  font-weight: 500;
+}
+
+/* Commission pill */
+.pi-partner-institutes-content .pi-commission {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  background: #f5e6b3; /* soft gold highlight */
+  color: #1e293b; /* navy text */
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* Table footer */
+.pi-partner-institutes-content .pi-table-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding: 0.5rem 0.6rem;
+  border-top: 1px solid #e5e7eb;
+  background: #fff;
+  font-size: 0.7rem;
+  color: #374151;
+}
+.pi-partner-institutes-content .pi-pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.pi-partner-institutes-content .pi-page-btn {
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: #111827;
+  cursor: pointer;
+  font-size: 0.65rem;
+}
+.pi-partner-institutes-content .pi-page-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.pi-partner-institutes-content .pi-page-btn:hover:not(:disabled) {
+  background: #d4af37; /* gold */
+  border-color: #d4af37;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Modal Overlay */
+.pi-partner-institutes-content .pi-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(17, 24, 39, 0.6); /* semi-transparent dark */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Modal Content */
+.pi-partner-institutes-content .pi-modal-content {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  font-size: 0.75rem;
+}
+
+/* Modal Title */
+.pi-partner-institutes-content .pi-modal-content h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+/* Form Grid */
+.pi-partner-institutes-content .pi-form-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Form Field */
+.pi-partner-institutes-content .pi-form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.pi-partner-institutes-content .pi-form-field label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.25rem;
+  font-size: 0.7rem;
+}
+
+.pi-partner-institutes-content .pi-form-field input {
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 0.75rem;
+  color: #111827;
+  background: #f9fafb;
+  transition: border 0.2s;
+}
+
+.pi-partner-institutes-content .pi-form-field input:focus {
+  outline: none;
+  border-color: #d4af37;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.25);
+}
+
+.pi-partner-institutes-content .pi-form-field input::placeholder {
+  color: #9ca3af;
+}
+
+/* Error Message */
+.pi-partner-institutes-content .pi-modal-content .pi-form-grid div[style*="color: #ff6b6b"] {
+  font-size: 0.7rem;
+  padding: 0.25rem 0;
+}
+
+/* Modal Form Buttons */
+.pi-partner-institutes-content .pi-modal-content .pi-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .pi-partner-institutes-content .pi-partner-institutes-header {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+  }
+  .pi-partner-institutes-content .pi-partner-institutes-actions {
+    justify-content: stretch;
+  }
+  .pi-partner-institutes-content .pi-input-with-icon {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .pi-partner-institutes-content .pi-ad-table-card {
+    padding: 0.6rem;
+  }
+  .pi-partner-institutes-content table th,
+  .pi-partner-institutes-content table td {
+    padding: 0.35rem;
+    font-size: 0.65rem;
+  }
+  .pi-partner-institutes-content .pi-table-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .pi-partner-institutes-content .pi-modal-content {
+    padding: 1rem;
+  }
+}

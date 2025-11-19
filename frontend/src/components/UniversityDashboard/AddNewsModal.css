@@ -1,0 +1,89 @@
+/* ===== Modal Overlay ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* ===== Modal Box ===== */
+.modal-content {
+  background: var(--analytics-bg);
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 95%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  border: 2px solid var(--analytics-border);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--analytics-primary);
+  text-align: center;
+}
+
+/* ===== Form ===== */
+.modal-form input,
+.modal-form textarea,
+.modal-form select {
+  width: 100%;
+  margin-bottom: 0.8rem;
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.modal-form input:focus,
+.modal-form textarea:focus,
+.modal-form select:focus {
+  border-color: var(--analytics-primary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+}
+
+/* ===== Modal Buttons ===== */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.modal-actions button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Cancel */
+.modal-actions button[type="button"] {
+  background: #f3f4f6; /* gray-100 */
+  color: #374151; /* gray-700 */
+}
+
+.modal-actions button[type="button"]:hover {
+  background: #e5e7eb; /* gray-200 */
+}
+
+/* Save / Update */
+.modal-actions button[type="submit"] {
+  background: var(--analytics-primary);
+  color: white;
+  font-weight: 600;
+}
+
+.modal-actions button[type="submit"]:hover {
+  background: var(--analytics-hover);
+}

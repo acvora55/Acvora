@@ -1,0 +1,134 @@
+/* ===== Support Container ===== */
+.support-container {
+  padding: 1rem;
+  max-width: 1400px;
+  width: 90%; 
+  margin: 0 auto;
+  background: #faf9f6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.75rem;
+  color: #000;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Header ===== */
+.support-header {
+  text-align: center;
+  margin-bottom: 1rem;
+  border-bottom: 2px dashed #d4af37; /* match borders */
+  padding-bottom: 0.5rem;
+}
+
+.support-header h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  color: #000;
+}
+
+.support-subtext {
+  font-size: 0.65rem;
+  color: #444;
+}
+
+/* ===== Grid Layout ===== */
+.tickets-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .tickets-list {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+}
+
+/* ===== Ticket Card ===== */
+.ticket-card {
+  background: #faf9f6;
+  border: 3px solid #1e293b; /* fixed border */
+  border-radius: 6px;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: background 0.2s ease, transform 0.15s ease;
+  max-width: 200px;
+  width: 100%;
+}
+
+.ticket-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid  #1e293b; /* darker yellow on hover */
+}
+
+/* ===== Ticket Header ===== */
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.ticket-info h3 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  color: #000;
+}
+
+.ticket-info p {
+  font-size: 0.65rem;
+  color: #444;
+  margin-bottom: 0.2rem;
+}
+
+/* ===== Buttons ===== */
+.ticket-btn {
+  background: #1e293b;
+  color: #cfb040;
+  border: 3px solid #fefce8; /* fixed border */
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.ticket-btn:hover {
+  background: #eab308;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Response Button */
+.response-btn {
+  background: #fef9c3;
+  border: 3px solid #fefce8; /* fixed border */
+  color: #000;
+}
+
+.response-btn:hover {
+  background: #fde047;
+  color: #000;
+}
+
+/* ===== Textarea ===== */
+.ticket-card textarea {
+  resize: vertical;
+  min-height: 60px;
+  border: 3px solid #fefce8; /* fixed border */
+  border-radius: 5px;
+  padding: 0.4rem;
+  width: 100%;
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+  background: #fffef7;
+  color: #000;
+}

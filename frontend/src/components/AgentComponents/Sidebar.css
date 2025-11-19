@@ -1,0 +1,124 @@
+/* ===== Sidebar Base ===== */
+.ad-sidebar {
+  background-color: #ffffff; /* clean white */
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e5e7eb; /* soft gray divider */
+  flex-shrink: 0;
+  overflow-y: auto;
+  transition: width 0.3s ease; /* Smooth width transition */
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #111827; /* charcoal text */
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.04); /* subtle depth */
+}
+
+/* Closed (collapses width to 0, freeing space) */
+.ad-sidebar.closed {
+  width: 0;
+  overflow: hidden; /* Clips content when collapsed */
+  border-right: none; /* Remove border when hidden */
+}
+
+/* ===== Premium Scrollbar ===== */
+.ad-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.ad-sidebar::-webkit-scrollbar-thumb {
+  background: #d4af37; /* gold */
+  border-radius: 6px;
+}
+.ad-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #b8860b; /* antique gold hover */
+}
+.ad-sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: #d4af37 transparent; /* Firefox */
+}
+
+/* ===== Brand Section ===== */
+.ad-brand {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f3f3f3; /* subtle off-white */
+}
+
+.ad-brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ad-brand-text strong {
+  font-size: 1rem;
+  color: #1e293b; /* deep navy */
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.ad-brand-text small {
+  font-size: 0.7rem;
+  color: #6b7280; /* muted gray */
+  margin-top: 2px;
+}
+
+/* ===== Menu ===== */
+.ad-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  flex-grow: 1;
+  gap: 0.3rem;
+  background-color: #faf9f6;
+}
+
+/* Menu item */
+.ad-menu-item {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: #374151; /* dark gray */
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-left: 3px solid transparent;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+}
+
+/* Menu icons */
+.ad-menu-item svg {
+  font-size: 1rem;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+/* Hover + Active states */
+.ad-menu-item:hover,
+.ad-menu-item.active {
+  background: #ecc94b;
+  color: #1e293b; /* navy text */
+  border-left-color: #d4af37; /* gold bar */
+  font-weight: 600;
+}
+.ad-menu-item:hover svg,
+.ad-menu-item.active svg {
+  opacity: 1;
+  color: #d4af37; /* gold icon highlight */
+}
+
+/* ===== Footer ===== */
+.ad-sidebar-footer {
+    padding: 0.7rem;
+    font-size: 0.7rem;
+    color: #000000;
+    border-top: 1px solid #d4af37;
+    text-align: center;
+    background: #fefce8;
+}

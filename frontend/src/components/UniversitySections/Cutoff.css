@@ -1,0 +1,79 @@
+/* ===== Cutoff Section (Unique Scoped) ===== */
+.uni-cutoff-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+  background-color: #fffefc; /* soft yellowish background */
+  border-radius: 8px;
+  border: 1px solid #1a202c; /* amber border */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  color: #000; /* black text */
+}
+
+.uni-cutoff-header h2 {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000 !important; /* amber-700 */
+  margin-bottom: 12px;
+}
+
+/* Loading & Error States */
+.uni-cutoff-loading,
+.uni-cutoff-error,
+.uni-cutoff-no-data {
+  text-align: center;
+  font-size: 0.95rem;
+  margin: 1rem 0;
+  color: #374151; /* gray-700 */
+}
+
+/* Table Wrapper */
+.uni-cutoff-table-wrapper {
+  overflow-x: auto;
+}
+
+/* Table */
+.uni-cutoff-container .uni-cutoff-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  color: #000;
+}
+
+/* Table Head */
+.uni-cutoff-container .uni-cutoff-table thead {
+  background-color: #1e293b !important; /* amber header */
+  color: #ecc94b !important; /* black text */
+}
+
+.uni-cutoff-container .uni-cutoff-table th {
+  padding: 8px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.uni-cutoff-container .uni-cutoff-table th:first-child {
+  text-align: left;
+}
+
+/* Table Body */
+.uni-cutoff-container .uni-cutoff-table tbody tr {
+  border-top: 1px solid #fcd34d;
+  background-color: #fffefc; /* base soft background */
+  transition: background-color 0.2s;
+}
+
+.uni-cutoff-container .uni-cutoff-table tbody tr:hover {
+  background-color: #ecc94b; /* light yellow hover */
+}
+
+.uni-cutoff-container .uni-cutoff-table td {
+  padding: 8px;
+  text-align: center;
+}
+
+.uni-cutoff-container .uni-cutoff-table td:first-child {
+  font-weight: 600;
+  text-align: left;
+}

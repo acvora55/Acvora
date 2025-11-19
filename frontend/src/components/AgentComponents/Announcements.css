@@ -1,0 +1,150 @@
+/* ===== Announcements Container ===== */
+.announcements-container {
+  max-width: 1100px;
+  width: 95%;
+  margin: 1rem auto;
+  padding: 0.8rem;
+  background: #faf9f6;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.75rem;
+  color: #1f2937;
+}
+
+/* ===== Title ===== */
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b; /* navy */
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+/* ===== Add Button ===== */
+.add-btn {
+  display: block;
+  margin: 0 auto 1rem auto;
+  background-color: #d4af37; /* gold */
+  color: #1e293b; /* navy text */
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid #d4af37;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.add-btn:hover {
+  background-color: #bfa233; /* darker gold */
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ===== Announcements List ===== */
+.announcements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Row Style */
+.announcement-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: #fff;
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb; /* light gray */
+  font-size: 0.7rem;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.announcement-row:hover {
+  background: #fef9c3; /* pale gold */
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Striped rows */
+.announcements-list .announcement-row:nth-child(odd) {
+  background: #faf9f6; /* light gray */
+  border-color: #1a202c;
+}
+.announcements-list .announcement-row:nth-child(even) {
+  background: #faf9f6;
+  border-color: #1a202c;
+}
+
+/* Left side (text info) */
+.announcement-info {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.announcement-title {
+  font-weight: 600;
+  color: #1e293b; /* navy */
+  font-size: 0.75rem;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.2rem;
+}
+
+.announcement-title::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 24px;
+  background-color: #d4af37; /* gold underline */
+  margin-top: 2px;
+  border-radius: 2px;
+}
+
+.announcement-date {
+  font-size: 0.65rem;
+  color: #6b7280; /* muted gray */
+}
+
+/* ===== Right side (actions) ===== */
+.announcement-actions {
+  display: flex;
+  gap: 0.4rem;
+  margin-left: 0.8rem;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+/* Edit Button */
+.edit-btn {
+  background-color: #fef9c3; /* pale gold */
+  color: #92400e;
+  border: 1px solid #d4af37;
+}
+.edit-btn:hover {
+  background-color: #d4af37; /* gold */
+  color: #fff;
+}
+
+/* Delete Button */
+.delete-btn {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+.delete-btn:hover {
+  background-color: #fca5a5;
+  color: #fff;
+}

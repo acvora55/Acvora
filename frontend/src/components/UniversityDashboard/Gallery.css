@@ -1,0 +1,357 @@
+/* ===== Gallery Page ===== */
+.gallery-page {
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.gallery-page h2 {
+  font-size: clamp(1.5rem, 5vw, 1.75rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+/* ===== Error and Loading States ===== */
+.error-message {
+  color: #dc2626;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1rem;
+  color: #4b5563;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* ===== Grid Layout for Categories ===== */
+.gallery-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.gallery-category {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.gallery-category h3 {
+  font-size: clamp(1.125rem, 3vw, 1.25rem);
+  font-weight: 600;
+  color: #2d2d2d;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+/* ===== Upload Button ===== */
+.upload-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background: #4b5563;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+  position: relative;
+}
+
+.upload-btn:hover {
+  background: #374151;
+}
+
+.upload-btn:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f2937;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  z-index: 10;
+  margin-top: 0.25rem;
+}
+
+.upload-btn input {
+  display: none;
+}
+
+/* ===== Gallery Items ===== */
+.gallery-items {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #6b7280 #e2e8f0;
+}
+
+.gallery-items::-webkit-scrollbar {
+  height: 8px;
+}
+
+.gallery-items::-webkit-scrollbar-track {
+  background: #e2e8f0;
+  border-radius: 4px;
+}
+
+.gallery-items::-webkit-scrollbar-thumb {
+  background: #6b7280;
+  border-radius: 4px;
+}
+
+.gallery-items::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+.gallery-item {
+  flex: 0 0 200px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.gallery-image,
+.gallery-video {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* ===== Action Buttons ===== */
+.gallery-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #f8fafc;
+  justify-content: center;
+  border-top: 1px solid #e2e8f0;
+}
+
+.gallery-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+  position: relative;
+}
+
+.gallery-actions .btn:hover {
+  transform: translateY(-1px);
+}
+
+.gallery-actions .btn:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.gallery-actions .btn:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f2937;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  z-index: 10;
+  margin-top: 0.25rem;
+}
+
+.btn.view {
+  background: #2563eb;
+  color: #fff;
+}
+.btn.view:hover {
+  background: #1e40af;
+}
+
+.btn.edit {
+  background: #16a34a;
+  color: #fff;
+}
+.btn.edit:hover {
+  background: #15803d;
+}
+
+.btn.delete {
+  background: #dc2626;
+  color: #fff;
+}
+.btn.delete:hover {
+  background: #b91c1c;
+}
+
+.btn.download {
+  background: #6b7280;
+  color: #fff;
+  text-decoration: none;
+}
+.btn.download:hover {
+  background: #4b5563;
+}
+
+/* ===== Empty States ===== */
+.no-gallery {
+  text-align: center;
+  padding: 1.5rem;
+  color: #6b7280;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+/* ===== Modal Preview ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.doc-preview {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  border: none;
+  background: #dc2626;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.875rem;
+  line-height: 1;
+  transition: background 0.2s ease;
+}
+
+.modal-close:hover {
+  background: #b91c1c;
+}
+
+.modal-close:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 768px) {
+  .gallery-page {
+    padding: 1rem;
+  }
+
+  .gallery-item {
+    flex: 0 0 160px;
+  }
+
+  .gallery-image,
+  .gallery-video {
+    height: 120px;
+  }
+
+  .gallery-actions .btn {
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 0.9rem;
+  }
+
+  .upload-btn {
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-item {
+    flex: 0 0 120px;
+  }
+
+  .gallery-image,
+  .gallery-video {
+    height: 100px;
+  }
+
+  .gallery-actions {
+    gap: 0.25rem;
+    padding: 0.4rem;
+  }
+
+  .gallery-actions .btn {
+    width: 1.6rem;
+    height: 1.6rem;
+    font-size: 0.8rem;
+  }
+
+  .upload-btn {
+    width: 1.6rem;
+    height: 1.6rem;
+    font-size: 0.8rem;
+  }
+}

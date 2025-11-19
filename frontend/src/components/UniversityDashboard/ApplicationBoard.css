@@ -1,0 +1,185 @@
+/* ===== ud-app-board.css =====
+   Compact application board with off-white theme
+*/
+
+/* Card wrapper */
+.ud-app-board {
+  background-color: #faf9f6; /* off-white */
+  border: 1px solid #e5e7eb; /* light gray border */
+  border-radius: 10px;
+  padding: 1rem; /* reduced */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+}
+
+/* Heading */
+.ud-app-board h3 {
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+  font-size: 1.1rem; /* reduced */
+  font-weight: 700;
+  color: #d4af37; /* amber-500 */
+  text-align: center;
+}
+
+/* Search */
+.ud-search-input {
+  width: 100%;
+  padding: 0.45rem 0.65rem; /* reduced */
+  margin-bottom: 0.7rem;
+  border: 1px solid #1e293b; /* gray-300 */
+  border-radius: 6px;
+  font-size: 0.8rem; /* smaller text */
+  background-color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ud-search-input:focus {
+  outline: none;
+  border-color: #f59e0b; /* amber-500 */
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.25);
+}
+
+/* Filter chips */
+.ab-app-filters {
+  margin: 0.4rem 0 0.7rem 0;
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.ab-filter-chip {
+  padding: 0.3rem 0.7rem; /* tighter */
+  border-radius: 9999px;
+  background-color: #f9fafb; /* off-white */
+  color: #78350f; /* deep amber */
+  border: 1px solid #1e293b;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.75rem; /* reduced */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.ab-filter-chip:hover {
+  background-color: #b45309; /* amber-700 */
+  color: #fff;
+}
+
+.ab-filter-chip-active {
+  background-color: #d1b036; /* amber-500 */
+  color: #fff;
+}
+
+/* Application rows */
+.ud-app-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* tighter */
+}
+
+.ud-app-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.8rem; /* reduced */
+  border-radius: 6px;
+  border: 1px solid #1e293b; /* gray-300 */
+  background-color: #ffffff;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ud-app-row:hover {
+  background-color: #f9fafb; /* off-white */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.07);
+}
+
+/* Info */
+.ud-app-info strong {
+  color: #1e293b; /* amber-900 */
+  font-size: 0.82rem; /* smaller */
+}
+
+.ud-app-sub {
+  font-size: 0.7rem; /* reduced */
+  color: #a16207; /* amber-600 */
+  margin-top: 0.15rem;
+}
+
+/* Status area */
+.ud-app-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem; /* reduced */
+}
+
+/* Badges - pastel */
+.ud-badge {
+  padding: 0.2rem 0.5rem; /* tighter */
+  border-radius: 9999px;
+  font-size: 0.68rem; /* reduced */
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ud-badge-new {
+  background-color: #6ee7b7; /* green-300 */
+  color: #065f46; /* green-800 */
+}
+
+.ud-badge-review {
+  background-color: #93c5fd; /* blue-300 */
+  color: #1e3a8a; /* blue-800 */
+}
+
+.ud-badge-shortlisted {
+  background-color: #fde68a; /* yellow-300 */
+  color: #78350f; /* amber-900 */
+}
+
+.ud-badge-accepted {
+  background-color: #a5b4fc; /* indigo-300 */
+  color: #312e81; /* indigo-900 */
+}
+
+.ud-badge-rejected {
+  background-color: #fca5a5; /* red-300 */
+  color: #7f1d1d; /* red-900 */
+}
+
+/* Status select */
+.ud-status-select {
+  padding: 0.25rem 0.45rem; /* smaller */
+  border: 1px solid #e5e7eb; /* gray-300 */
+  border-radius: 5px;
+  background-color: #ffffff; /* white */
+  cursor: pointer;
+  font-size: 0.72rem; /* smaller */
+  color: #78350f; /* amber */
+  transition: border-color 0.2s ease;
+}
+
+.ud-status-select:focus {
+  border-color: #f59e0b; /* amber-500 */
+  outline: none;
+}
+
+/* No results */
+.ud-no-results {
+  text-align: center;
+  color: #a16207; /* amber-600 */
+  padding: 0.7rem;
+  font-size: 0.78rem; /* reduced */
+}
+
+/* ===== Row Stripes ===== */
+.ud-app-board table tbody tr:nth-child(even) td {
+  background: #fffefc; /* subtle off-white */
+}
+
+.ud-app-board table tbody tr:nth-child(odd) td {
+  background: #fffde7; /* soft cream */
+}
+
+.ud-app-board table tbody tr:hover td {
+  background: #fef08a; /* yellow-200 on hover */
+}

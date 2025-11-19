@@ -1,0 +1,229 @@
+/* ===== About Us Section ===== */
+.about-us-container {
+  margin: clamp(2rem, 5vw, 4rem); /* Responsive margin */
+  background-color: #faf9f6; /* soft neutral instead of amber-50 */
+  color: #000;
+  padding: clamp(1rem, 3vw, 2rem); /* Responsive padding */
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 3vw, 2rem); /* Responsive gap */
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 50vh;
+  flex-direction: row; /* Image right, text left */
+  border: 1px solid #1e293b; /* lighter amber border */
+  border-radius: 0.5rem;
+}
+
+.about-us-content {
+  max-width: 50%;
+  flex: 1 1 clamp(300px, 45%, 400px); /* Responsive flex basis */
+  order: 1; /* Text first */
+}
+
+.about-us-image {
+  max-width: 50%;
+  flex: 1 1 clamp(250px, 45%, 300px); /* Responsive flex basis */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  order: 2; /* Image second */
+}
+
+.about-us-title {
+  font-size: clamp(1.25rem, 4vw, 1.5rem); /* Responsive font size */
+  font-weight: 700;
+  margin-bottom: clamp(0.5rem, 2vw, 1rem); /* Responsive margin */
+  color: #000; /* amber-700 */
+  font-family: 'Merriweather', serif;
+}
+
+.about-us-description {
+  font-size: clamp(0.75rem, 2.5vw, 0.85rem); /* Responsive font size */
+  line-height: 1.6;
+  margin-bottom: clamp(0.5rem, 2vw, 1rem); /* Responsive margin */
+  color: #374151; /* gray-700 for readability */
+  text-align: left;
+  max-width: 100%;
+}
+
+.theme-toggle-button {
+  background-color: #fef9c3; /* pale cream */
+  color: #000;
+  padding: clamp(0.4rem, 2vw, 0.5rem) clamp(0.8rem, 3vw, 1rem); /* Responsive padding */
+  border-radius: 0.3rem;
+  border: 1px solid #fde047;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: clamp(0.75rem, 2vw, 0.875rem); /* Responsive font size */
+}
+
+.theme-toggle-button:hover {
+  background-color: #facc15; /* yellow-400 */
+  color: #000;
+}
+
+/* Image Carousel */
+.image-carousel {
+  position: relative;
+  width: 85%;
+  height: clamp(180px, 40vw, 220px); /* Responsive height */
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid #fcd34d; /* softer amber */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.carousel-images {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%; /* Match parent height */
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: clamp(6px, 1vw, 8px); /* Responsive gap */
+}
+
+.indicator {
+  width: clamp(8px, 2vw, 10px); /* Responsive size */
+  height: clamp(8px, 2vw, 10px);
+  background-color: #e5e7eb; /* neutral gray-200 */
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.indicator.active {
+  background-color: #d97706; /* amber-600 */
+}
+
+/* Section Header */
+.university-header {
+  text-align: center;
+  margin: clamp(1.5rem, 4vw, 2rem) 0 clamp(0.75rem, 2vw, 1rem) 0; /* Responsive margin */
+}
+
+.university-name {
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.5rem, 5vw, 2rem); /* Responsive font size */
+  font-weight: 700;
+  color: #d97706; /* amber-600 */
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.university-name::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #fbbf24; /* amber-400 */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .about-us-container {
+    margin: clamp(1.5rem, 4vw, 2rem);
+    padding: clamp(0.75rem, 2vw, 1.5rem);
+  }
+
+  .about-us-content,
+  .about-us-image {
+    max-width: 100%;
+    flex: 1 1 100%; /* Stack on smaller screens */
+  }
+
+  .image-carousel {
+    width: 90%;
+    height: clamp(150px, 35vw, 180px); /* Adjust height */
+  }
+
+  .carousel-image {
+    height: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-us-container {
+    flex-direction: column;
+    margin: clamp(1rem, 3vw, 1.5rem);
+    padding: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .about-us-content,
+  .about-us-image {
+    order: unset; /* Reset order for stacking */
+  }
+
+  .image-carousel {
+    width: 95%;
+    height: clamp(120px, 30vw, 160px); /* Smaller height for mobile */
+  }
+
+  .carousel-image {
+    height: 100%;
+  }
+
+  .theme-toggle-button {
+    padding: clamp(0.3rem, 1.5vw, 0.4rem) clamp(0.6rem, 2vw, 0.8rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .about-us-container {
+    margin: clamp(0.75rem, 2vw, 1rem);
+    padding: clamp(0.5rem, 1.5vw, 0.75rem);
+    gap: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .about-us-title {
+    font-size: clamp(1rem, 3.5vw, 1.25rem);
+  }
+
+  .about-us-description {
+    font-size: clamp(0.65rem, 2vw, 0.75rem);
+  }
+
+  .image-carousel {
+    width: 100%;
+    height: clamp(100px, 25vw, 120px); /* Smaller for very small screens */
+  }
+
+  .carousel-image {
+    height: 100%;
+  }
+
+  .carousel-indicators {
+    gap: clamp(4px, 1vw, 6px);
+  }
+
+  .indicator {
+    width: clamp(6px, 1.5vw, 8px);
+    height: clamp(6px, 1.5vw, 8px);
+  }
+
+  .university-name {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+  }
+}

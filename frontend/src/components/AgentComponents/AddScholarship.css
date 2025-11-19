@@ -1,0 +1,161 @@
+.ad-addsch-container {
+  min-height: 100vh;
+  display: flex;
+  background-color: #faf9f6;
+  padding: .5rem;
+  justify-content: center
+}
+
+.ad-addsch-main {
+  flex: 1;
+  padding: .6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.ad-addsch-inner {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto
+}
+
+.ad-addsch-header {
+  text-align: center;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: .4rem
+}
+
+.ad-addsch-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(to right, #3b82f6, #1e3a8a);
+  border-radius: 1px
+}
+
+.ad-addsch-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #1a202c, #4b5563);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: .3rem;
+  letter-spacing: -.02em
+}
+
+.ad-addsch-subtitle {
+  color: #6b7280;
+  font-size: .75rem;
+  line-height: 1.3;
+  font-weight: 400;
+  max-width: 400px;
+  margin: 0 auto
+}
+
+.ad-addsch-card {
+  background: #fff;
+  border-radius: .5rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .05);
+  border: 1px solid #1a202c;
+  padding: 1rem;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  transition: transform .15s ease, box-shadow .15s ease
+}
+
+.ad-addsch-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .08)
+}
+
+.ad-addsch-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+  text-align: center;
+  margin-bottom: .8rem;
+  position: relative;
+  padding-bottom: .3rem
+}
+
+.ad-addsch-card-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25px;
+  height: 1px;
+  background: #3b82f6;
+  border-radius: 1px
+}
+
+.ad-addsch-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .5rem
+}
+
+@media(min-width:768px) {
+  .ad-addsch-form-grid {
+    grid-template-columns: repeat(2, 1fr)
+  }
+}
+
+@media(min-width:1024px) {
+  .ad-addsch-form-grid {
+    grid-template-columns: repeat(3, 1fr)
+  }
+}
+
+.ad-addsch-form-group {
+  display: flex;
+  flex-direction: column
+}
+
+.ad-span-3 {
+  grid-column: span 3
+}
+
+.ad-addsch-form-group input,
+.ad-addsch-form-group select,
+.ad-addsch-form-group textarea {
+  padding: .4rem .6rem;
+  border: 1px solid #d1d5db;
+  border-radius: .4rem;
+  transition: all .15s;
+  font-size: .75rem;
+  margin-top: .3rem
+}
+
+.ad-addsch-form-group input:focus,
+.ad-addsch-form-group select:focus,
+.ad-addsch-form-group textarea:focus {
+  outline: none;
+  border-color: #e5c449;
+  box-shadow: 0 0 0 2px rgba(229, 196, 73, .3)
+}
+
+.ad-addsch-submit-btn {
+  width: 100%;
+  background: linear-gradient(to right, #ecc94b, #f6e05e);
+  color: #1a202c;
+  padding: .4rem .6rem;
+  border-radius: .5rem;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+  transition: all .15s;
+  margin-top: .5rem
+}
+
+.ad-addsch-submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .1)
+}

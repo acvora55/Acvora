@@ -1,0 +1,23 @@
+.ad-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.ad-stat-card {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.ad-stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.ad-stat-label {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}

@@ -1,0 +1,182 @@
+/* ===== ad-scholarship-analytics.css =====
+   Blue + golden modern theme (same as UD version)
+*/
+
+/* Container */
+.ad-scholarship-analytics-container {
+  min-height: 100vh;
+  display: flex;
+  background-color: #f7fafc; /* light gray background */
+  padding: 1rem;
+}
+
+/* Main Content */
+.ad-scholarship-analytics-main {
+  flex: 1;
+  padding: 1.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.ad-scholarship-analytics-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+.ad-scholarship-analytics-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.ad-scholarship-analytics-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e293b; /* dark navy */
+}
+.ad-scholarship-analytics-subtitle {
+  color: #64748b; /* cool gray */
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+/* Metrics Grid */
+.ad-scholarship-analytics-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 640px) {
+  .ad-scholarship-analytics-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .ad-scholarship-analytics-metrics-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Metric Card */
+.ad-scholarship-analytics-metric-card {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  transition: background-color 0.2s ease;
+}
+.ad-scholarship-analytics-metric-card:hover {
+  background-color: #fef3c7; /* light golden hover */
+}
+.ad-scholarship-analytics-metric-icon {
+  font-size: 1.4rem;
+  color: #17294d; /* golden */
+}
+.ad-scholarship-analytics-metric-title {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #64748b; /* gray */
+}
+.ad-scholarship-analytics-metric-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e293b; /* dark navy */
+}
+
+/* Card */
+.ad-scholarship-analytics-card {
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.06);
+}
+.ad-scholarship-analytics-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.6rem;
+}
+
+/* Charts */
+.ad-scholarship-analytics-status-charts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+@media (min-width: 768px) {
+  .ad-scholarship-analytics-status-charts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.ad-scholarship-analytics-status-chart-title {
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: #fbbf24; /* golden */
+  margin-bottom: 0.3rem;
+}
+.ad-scholarship-analytics-legend {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #1e293b;
+}
+.ad-scholarship-analytics-chart-note {
+  text-align: center;
+  font-size: 0.72rem;
+  color: #64748b;
+  margin-top: 0.3rem;
+}
+
+/* Table */
+.ad-scholarship-analytics-table-wrapper {
+  overflow-x: auto;
+}
+.ad-scholarship-analytics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+.ad-scholarship-analytics-table th,
+.ad-scholarship-analytics-table td {
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid #bfa233; /* gold-ish border for contrast */
+}
+.ad-scholarship-analytics-table thead tr {
+  background: #1e293b; /* dark navy header */
+  color: #d1af39;       /* gold text */
+}
+.ad-scholarship-analytics-table tbody tr:nth-child(even) td {
+  background: #f5f5f5; /* light off-white stripe */
+}
+.ad-scholarship-analytics-table tbody tr:nth-child(odd) td {
+  background: #faf9f6; /* slightly darker off-white stripe */
+}
+.ad-scholarship-analytics-table tbody tr:hover td {
+  background: #ecc94b; /* gold highlight on hover */
+  color: #1e293b;      /* text remains readable */
+}
+
+/* Status Text */
+.ad-scholarship-analytics-approved {
+  color: #16a34a; /* green-600 */
+  font-weight: 600;
+}
+.ad-scholarship-analytics-pending {
+  color: #fbbf24; /* golden */
+  font-weight: 600;
+}
+.ad-scholarship-analytics-rejected {
+  color: #dc2626; /* red-600 */
+  font-weight: 600;
+}

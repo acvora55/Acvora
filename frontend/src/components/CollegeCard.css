@@ -1,0 +1,276 @@
+.college-card {
+  display: flex;
+  gap: 1rem;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  margin-bottom: 1rem;
+}
+
+.college-image-section {
+  position: relative;
+  flex: 0 0 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.college-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.college-tag {
+  position: absolute;
+  top: 26px;
+  left: 8px;
+  background: #f2f2f2;
+  padding: 3px 8px;
+  border-radius: 16px;
+  font-size: 10px;
+}
+
+.college-details {
+  flex: 1;
+}
+
+.college-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.college-location {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.college-info-box {
+  display: flex;
+  gap: 1rem;
+  background: #fdf8f3;
+  border: 1px solid #f2e5d9;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.info-item {
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item strong {
+  margin-top: 2px;
+  font-size: 13px;
+}
+
+.college-description {
+  font-size: 12px;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.read-more {
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.college-courses {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.course-pill {
+  background: #f5f5f5;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+}
+
+.more-courses {
+  color: #2563eb;
+  font-weight: 500;
+  font-size: 11px;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.counselling-btn {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.explore-btn {
+  background: transparent;
+  color: #2563eb;
+  border: 1px solid #2563eb;
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.explore-header sub {
+  font-size: 12px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .college-card {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .college-image-section {
+    flex: none;
+    width: 100%;
+    height: auto;
+  }
+
+  .college-image {
+    height: 150px;
+    width: 100%;
+  }
+
+  .college-tag {
+    top: 10px;
+    left: 10px;
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+
+  .college-details {
+    padding-top: 0.5rem;
+  }
+
+  .college-name {
+    font-size: 14px;
+  }
+
+  .college-location {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  .college-info-box {
+    gap: 0.5rem;
+    padding: 4px 8px;
+  }
+
+  .info-item {
+    font-size: 10px;
+    gap: 1px;
+  }
+
+  .info-item strong {
+    font-size: 12px;
+  }
+
+  .college-description {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .read-more {
+    font-size: 11px;
+  }
+
+  .college-courses {
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .course-pill {
+    padding: 2px 6px;
+    font-size: 10px;
+  }
+
+  .card-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .counselling-btn,
+  .explore-btn {
+    width: 100%;
+    padding: 8px;
+    font-size: 11px;
+  }
+}
+
+/* Tablet Responsiveness */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .college-card {
+    gap: 0.75rem;
+    padding: 0.875rem;
+  }
+
+  .college-image-section {
+    flex: 0 0 180px;
+  }
+
+  .college-image {
+    height: 160px;
+  }
+
+  .college-name {
+    font-size: 15px;
+  }
+
+  .college-location {
+    font-size: 11.5px;
+  }
+
+  .college-info-box {
+    gap: 0.75rem;
+    padding: 5px 9px;
+  }
+
+  .info-item {
+    font-size: 10.5px;
+  }
+
+  .info-item strong {
+    font-size: 12.5px;
+  }
+
+  .college-description {
+    font-size: 11.5px;
+  }
+
+  .course-pill {
+    padding: 2.5px 7px;
+    font-size: 10.5px;
+  }
+
+  .card-buttons {
+    gap: 0.5rem;
+  }
+
+  .counselling-btn,
+  .explore-btn {
+    padding: 5px 12px;
+    font-size: 11.5px;
+  }
+}

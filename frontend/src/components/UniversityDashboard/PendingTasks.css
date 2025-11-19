@@ -1,0 +1,33 @@
+.ud-pending .ud-task-list {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ud-chip {
+  background-color: #e5e7eb; /* Gray-200 (neutral background) */
+  border-radius: 9999px;
+  padding: 0.25rem 0.9rem;
+  font-size: 0.85rem;
+  color: #374151; /* Gray-700 text */
+  border: 1px solid #e5e7eb; /* Same as background */
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hover/Focus state */
+.ud-chip:hover,
+.ud-chip:focus {
+  background-color: #2563EB; /* Blue hover */
+  border-color: #2563EB;
+  color: #ffffff; /* White text */
+  outline: none;
+}
+
+/* Active state */
+.ud-chip:active {
+  background-color: #10b981; /* Emerald green active */
+  border-color: #059669; /* Darker green border */
+  color: #ffffff;
+}

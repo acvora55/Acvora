@@ -1,0 +1,168 @@
+/* Container */
+.uda-addsch-container {
+  min-height: 100vh;
+  display: flex;
+  background-color: #faf9f6;
+  padding: clamp(0.5rem, 2vw, 1rem);
+  justify-content: center;
+}
+
+/* Main Content */
+.uda-addsch-main {
+  flex: 1;
+  padding: clamp(1rem, 3vw, 1.2rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Inner Container */
+.uda-addsch-inner {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Header */
+.uda-addsch-header {
+  text-align: center;
+  margin-bottom: clamp(1rem, 4vw, 2rem);
+}
+
+.uda-addsch-title {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 800;
+  background: linear-gradient(to right, #1a202c, #4b5563);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.uda-addsch-subtitle {
+  color: #6b7280;
+  font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+}
+
+/* Card */
+.uda-addsch-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  border: 2px solid #1a202c;
+  padding: clamp(1rem, 4vw, 2rem);
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Card Title */
+.uda-addsch-card-title {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-weight: 600;
+  color: #111827;
+  text-align: center;
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+}
+
+/* Form Grid */
+.uda-addsch-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(0.75rem, 2vw, 1rem);
+}
+
+@media (min-width: 768px) {
+  .uda-addsch-form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .uda-addsch-form-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.uda-addsch-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.uda-span-3 {
+  grid-column: 1 / -1;
+}
+
+/* Inputs */
+.uda-addsch-form-group input,
+.uda-addsch-form-group select,
+.uda-addsch-form-group textarea {
+  padding: clamp(0.5rem, 2vw, 0.75rem) 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.75rem;
+  transition: all 0.2s;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  margin-top: 0.5rem;
+  box-sizing: border-box;
+}
+
+.uda-addsch-form-group input:focus,
+.uda-addsch-form-group select:focus,
+.uda-addsch-form-group textarea:focus {
+  outline: none;
+  border-color: #e5c449;
+  box-shadow: 0 0 0 3px rgba(229,196,73,0.4);
+}
+
+/* Submit Button */
+.uda-addsch-submit-btn {
+  width: 100%;
+  background: linear-gradient(to right, #ecc94b, #f6e05e);
+  color: #1a202c;
+  padding: clamp(0.5rem, 2vw, 0.75rem) 1rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.2s;
+  margin-top: 1rem;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.uda-addsch-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+/* Additional responsive adjustments for very small screens */
+@media (max-width: 480px) {
+  .uda-addsch-container {
+    padding: 0.5rem;
+  }
+
+  .uda-addsch-main {
+    padding: 0.5rem;
+  }
+
+  .uda-addsch-card {
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+
+  .uda-addsch-form-grid {
+    gap: 0.75rem;
+  }
+
+  .uda-span-3 {
+    grid-column: 1;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .uda-addsch-form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .uda-span-3 {
+    grid-column: 1;
+  }
+}

@@ -1,0 +1,166 @@
+/* ================= MAIN CONTENT ================= */
+.ud-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.6rem 0.8rem; /* reduced padding */
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+  min-width: 0;
+  background: #e8e8e8; /* Changed to off-white */
+  scrollbar-width: thin;
+  scrollbar-color: #facc15 transparent;
+}
+.ud-main::-webkit-scrollbar {
+  width: 5px;
+}
+.ud-main::-webkit-scrollbar-thumb {
+  background-color: #facc15;
+  border-radius: 5px;
+}
+.ud-main::-webkit-scrollbar-thumb:hover {
+  background-color: #eab308;
+}
+
+/* ================= PAGE TITLES ================= */
+.ud-page h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 10px auto 6px;
+  color: #000;
+}
+.ud-page p {
+  font-size: 0.75rem;
+  line-height: 1.3;
+  text-align: center;
+  margin: 0 auto 12px;
+  color: #333;
+  max-width: 480px;
+}
+
+/* ================= STAT CARDS ================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.6rem;
+}
+.stat-card {
+  background: #faf9f6; /* Changed to off-white */
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #1e293b;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  min-height: 85px;
+  color: #000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ================= ACTIONS ================= */
+.actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+.button-group {
+  display: flex;
+  gap: 0.4rem;
+}
+.primary-btn {
+  background: #1a202c;
+  color: #ecc94b;
+  padding: 0.35rem 0.7rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.primary-btn:hover {
+  background: #ca8a04;
+  color: #fff;
+}
+.link-group {
+  display: flex;
+  gap: 0.6rem;
+}
+.link-btn {
+  background: none;
+  border: none;
+  color: #d1ae3a;
+  cursor: pointer;
+  font-size: 0.75rem;
+  text-decoration: underline;
+}
+
+/* ================= TABLES ================= */
+.tables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+.table-card {
+  background: #faf9f6; /* Changed to off-white */
+  border: 2px solid #1e293b;
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-size: 0.7rem;
+  color: #000;
+}
+.table-card h3 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #000;
+}
+.table-card table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.7rem;
+}
+.table-card th,
+.table-card td {
+  padding: 0.35rem;
+  border-bottom: 1px solid #bfa233;
+  text-align: left;
+}
+.table-card th {
+  background: #1e293b; /* Kept for contrast, can change to #f5f5f5 if preferred */
+  font-weight: 600;
+  color: #d1ae3a;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+/* ✅ Row Striping (Agent Dashboard Style) */
+.table-card tbody tr:nth-child(even) td {
+  background: #f5f5f5; /* Changed to off-white */
+}
+.table-card tbody tr:nth-child(odd) td {
+  background: #f0f0f0; /* Slightly darker off-white for striping */
+}
+.table-card tbody tr:hover td {
+  background: #ecc94b; /* Kept hover highlight for visibility */
+}
+
+/* ================= FOOTER ================= */
+.ud-footer {
+  margin-top: auto;
+  padding: 0.6rem 0;
+  font-size: 0.65rem;
+  text-align: center;
+  color: #000;
+  border-top: 1px solid #d4af37;
+  background: #f5f5f5; /* Changed to off-white */
+  border-radius: 8px;
+}

@@ -1,0 +1,20 @@
+/* tr {
+  background-color: gray;
+}
+
+
+tr:nth-child(2n) {
+  background-color: lightgray;
+}
+
+label {
+  display: block;
+  font:
+      0.80rem 'Fira Sans', 
+      sans-serif;
+}
+
+input,
+label {
+  margin: 0.4rem 0;
+} */

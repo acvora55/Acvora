@@ -1,0 +1,60 @@
+/* Container & Layout */
+.sett-container {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #e8e8e8);
+}
+
+.sett-main {
+  flex: 1;
+  margin-left: 16rem; /* Sidebar width */
+  padding: 2rem 1rem;
+}
+
+.sett-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Header */
+.sett-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sett-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #1a202c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.sett-subtitle {
+  color: #4b5563;
+}
+
+/* Card */
+.sett-card {
+  background: #fff;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 2rem;
+}
+
+.sett-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.sett-card-desc {
+  color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+}

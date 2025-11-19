@@ -1,0 +1,39 @@
+
+@keyframes marquee {
+	0% {
+		left: 0;
+	}
+	100% {
+		left: -320%;
+	}
+}
+.animate {
+	width: 300%;
+	animation: marquee 20s linear infinite;
+	top: 70%;
+	transform: translate(0, -50%);
+}
+
+
+@screen lg {
+    
+@keyframes marquee {
+	0% {
+		left: 0;
+	}
+	100% {
+		left: -100%;
+	}
+}
+.animate {
+	width: 300%;
+	animation: marquee 20s linear infinite;
+	top: 70%;
+	transform: translate(0, -50%);
+}
+
+} 
+/* .animate:hover {
+	animation-play-state: paused;
+} */
+

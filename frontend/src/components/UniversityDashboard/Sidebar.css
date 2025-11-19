@@ -1,0 +1,112 @@
+/* Sidebar base */
+.ud-sidebar {
+  background-color: #ffffff; /* changed to white */
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #facc15; /* yellow accent */
+  flex-shrink: 0;
+  overflow: hidden; /* Hide content when collapsed */
+  transition: width 0.3s ease, border-right-width 0.3s ease, padding 0.3s ease; /* Smooth width transition */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #111827; /* black text as default */
+}
+
+/* ===== Custom Yellow Scrollbar ===== */
+.ud-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ud-sidebar::-webkit-scrollbar-thumb {
+  background: #facc15; /* yellow */
+  border-radius: 6px;
+}
+
+.ud-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #eab308; /* darker yellow */
+}
+
+.ud-sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: #facc15 transparent; /* Firefox support */
+}
+
+.ud-sidebar.closed {
+  width: 0; /* Collapse to 0 width */
+  border-right-width: 0; /* Hide border */
+  padding: 0; /* Remove any internal padding */
+}
+
+/* ===== Brand ===== */
+.ud-brand {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #fde047;
+  background: #e8e8e8; /* changed to white */
+  flex-shrink: 0; /* Prevent brand from shrinking during transition */
+}
+
+.ud-brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ud-brand-text strong {
+  font-size: 1rem;
+  color: #111827; /* black title */
+}
+
+.ud-brand-text small {
+  font-size: 0.7rem;
+  color: #444; /* dark gray subtitle */
+}
+
+/* ===== Menu ===== */
+.ud-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  flex-grow: 1;
+  gap: 0.4rem;
+  overflow: hidden; /* Ensure menu items don't overflow during collapse */
+}
+
+/* ===== Menu Items ===== */
+.ud-menu-item {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: #111827; /* black base text */
+  display: flex;
+  align-items: center;
+  border-left: 3px solid transparent;
+  border-radius: 0.25rem;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap; /* Prevent text wrapping during narrow states */
+}
+
+/* Hover + Active */
+.ud-menu-item:hover,
+.ud-menu-item.active {
+  background-color: #ecc94b;
+  color: #000; /* stronger black when active */
+  border-left-color: #facc15; /* yellow accent */
+  font-weight: 600;
+}
+
+/* ===== Footer ===== */
+.ud-sidebar-footer {
+  padding: 0.75rem;
+  font-size: 0.7rem;
+  color: #444; /* dark gray text */
+  border-top: 1px solid #fde047;
+  text-align: center;
+  background: #ffffff; /* changed to white */
+  flex-shrink: 0; /* Prevent footer from shrinking */
+}

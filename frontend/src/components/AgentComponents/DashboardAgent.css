@@ -1,0 +1,172 @@
+/* Root dashboard content container */
+.dashboard-content {
+  padding: 1rem;
+  max-width: 1100px;
+  width: 90%;
+  margin: 0 auto;
+  background: #faf9f6; /* soft light gray background */
+  color: #1e293b; /* slate text */
+  font-size: 0.75rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 10px;
+}
+
+/* Stat Cards Container */
+.dashboard-content .ad-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+/* Stat Card */
+.dashboard-content .ad-stat-card {
+  padding: 0.6rem;
+  border-radius: 0.75rem;
+  background: #faf9f6; /* clean white */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 2px solid #1e293b; /* navy border */
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #0f172a; /* deep navy text */
+}
+.dashboard-content .ad-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.dashboard-content .ad-stat-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #d4af37; /* gold */
+  margin-bottom: 0.2rem;
+}
+.dashboard-content .ad-stat-label {
+  font-size: 0.65rem;
+  color: #6b7280; /* muted gray */
+  font-weight: 500;
+}
+
+/* Action Buttons */
+.dashboard-content .dashboard-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.dashboard-content .action-button {
+  padding: 0.45rem 0.9rem;
+  border: 2px solid #d4af37; /* gold border */
+  border-radius: 0.5rem;
+  background: #1e293b; /* deep navy background */
+  color: #ffffff; /* white text */
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+.dashboard-content .action-button:hover {
+  background-color: #ecc94b; 
+  color: #000; /* navy text */
+  transform: translateY(-2px);
+}
+
+/* Tables Container */
+.dashboard-content .dashboard-tables {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Table Card */
+.dashboard-content .ad-table-card {
+  flex: 1;
+  background: #faf9f6;
+  border: 2px solid #1e293b; /* navy border */
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  font-size: 0.7rem;
+  color: #374151; /* dark gray text */
+}
+
+/* Table Card Header */
+.dashboard-content .ad-table-card h3 {
+  margin: 0;
+  padding: 0.6rem 0.9rem;
+  background: #1e293b; /* deep navy */
+  color: #d4af37; /* gold */
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Table Styling */
+.dashboard-content .ad-table-card table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.7rem;
+}
+.dashboard-content .ad-table-card th,
+.dashboard-content .ad-table-card td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  color: #374151;
+}
+.dashboard-content .ad-table-card th {
+  font-weight: 600;
+  background: #f9fafb;
+  border-bottom: 1px solid #1a202c; /* gold border */
+  font-size: 0.72rem;
+}
+.dashboard-content .ad-table-card td {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+/* Row striping */
+.dashboard-content .ad-table-card tbody tr:nth-child(even) td {
+  background: #ffffff; /* white */
+}
+.dashboard-content .ad-table-card tbody tr:nth-child(odd) td {
+  background: #f9fafb; /* soft light gray */
+}
+.dashboard-content .ad-table-card tbody tr:hover td {
+  background: #ecc94b; /* soft gold highlight */
+}
+
+/* Remove last row border */
+.dashboard-content .ad-table-card tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .dashboard-content .ad-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dashboard-content .dashboard-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .dashboard-content .dashboard-tables {
+    flex-direction: column;
+  }
+  .dashboard-content .ad-table-card {
+    margin-bottom: 0.8rem;
+  }
+}
+@media (max-width: 768px) {
+  .dashboard-content {
+    padding: 0.5rem;
+  }
+  .dashboard-content .ad-stats {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-content .action-button {
+    width: 100%;
+  }
+  .dashboard-content .ad-table-card th,
+  .dashboard-content .ad-table-card td {
+    padding: 0.4rem;
+    font-size: 0.65rem;
+  }
+}
