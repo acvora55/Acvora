@@ -25,7 +25,7 @@ export default function SavedScholarships() {
       }
 
       try {
-        const res = await fetch(`https://acvora-1.onrender.com/api/savedScholarships/${user.userId}`);
+        const res = await fetch(`https://acvora-07fo.onrender.com/api/savedScholarships/${user.userId}`);
         if (!res.ok) throw new Error("Failed to fetch saved scholarships");
         const { savedScholarships } = await res.json();
         setScholarships(savedScholarships);
@@ -49,7 +49,7 @@ export default function SavedScholarships() {
     try {
       const method = scholarships.some(s => s._id === scholarshipId) ? "DELETE" : "POST";
       const res = await fetch(
-        `https://acvora-1.onrender.com/api/savedScholarships/${user.userId}/${scholarshipId}`,
+        `https://acvora-07fo.onrender.com/api/savedScholarships/${user.userId}/${scholarshipId}`,
         { method }
       );
       if (!res.ok) throw new Error("Failed to update saved scholarships");

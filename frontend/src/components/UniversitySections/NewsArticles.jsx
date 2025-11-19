@@ -9,7 +9,7 @@ const NewsArticles = () => {
   useEffect(() => {
     if (!universityId) return;
 
-    fetch(`https://acvora-1.onrender.com/api/universities/${universityId}/news`)
+    fetch(`https://acvora-07fo.onrender.com/api/universities/${universityId}/news`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setNewsItems(data.news);

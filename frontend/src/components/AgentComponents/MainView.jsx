@@ -21,7 +21,7 @@ export default function MainView({ route, sidebarOpen }) {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const res = await axios.get("https://acvora-1.onrender.com/api/students");
+        const res = await axios.get("https://acvora-07fo.onrender.com/api/students");
         setStudents(res.data.map((s) => ({ ...s, id: s._id })));
       } catch (err) {
         console.error("Error fetching students:", err);

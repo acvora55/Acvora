@@ -36,7 +36,7 @@ const CourseExplorer = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await axios.get('https://acvora-1.onrender.com/api/courses');
+        const res = await axios.get('https://acvora-07fo.onrender.com/api/courses');
         const data = res.data;
         console.log('First course in response:', data[0]); // Inspect first item
         setCourses(data);
@@ -82,7 +82,7 @@ const CourseExplorer = () => {
     const uid = localStorage.getItem("userId");
     if (uid) {
       setUserId(uid);
-      axios.get(`https://acvora-1.onrender.com/api/savedCourses/${uid}`)
+      axios.get(`https://acvora-07fo.onrender.com/api/savedCourses/${uid}`)
         .then(res => {
           setSavedCourses(new Set(res.data.map(c => c.courseId.toString())));
         })
@@ -129,7 +129,7 @@ const CourseExplorer = () => {
     try {
       if (isSaved) {
         // Remove
-        await axios.delete(`https://acvora-1.onrender.com/api/savedCourses/${userId}/${courseId}`);
+        await axios.delete(`https://acvora-07fo.onrender.com/api/savedCourses/${userId}/${courseId}`);
         setSavedCourses(prev => {
           const newSet = new Set(prev);
           newSet.delete(courseId);
@@ -137,7 +137,7 @@ const CourseExplorer = () => {
         });
       } else {
         // Add
-        await axios.post(`https://acvora-1.onrender.com/api/savedCourses/${userId}`, {
+        await axios.post(`https://acvora-07fo.onrender.com/api/savedCourses/${userId}`, {
           courseId: course._id || course.id,
           courseTitle: course.courseTitle,
           eligibility: course.eligibility
@@ -330,7 +330,7 @@ const CourseExplorer = () => {
                     className="flex items-center space-x-3 bg-white shadow-sm rounded-lg p-2 hover:shadow-md transition"
                   >
                     <img
-                      src={inst.url ? `https://acvora-1.onrender.com/${inst.url}` : "/default-logo.png"}
+                      src={inst.url ? `https://acvora-07fo.onrender.com/${inst.url}` : "/default-logo.png"}
                       alt={inst.description || "Institute"}
                       className="w-16 h-16 rounded-full object-cover border border-gray-300"
                       onError={(e) => (e.target.src = "/default-logo.png")}

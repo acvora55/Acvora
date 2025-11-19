@@ -143,7 +143,7 @@ function ScholarshipCard({ data, user, onToggleSave, savedScholarships }) {
     try {
       const method = saved ? "DELETE" : "POST";
       const res = await fetch(
-        `https://acvora-1.onrender.com/api/savedScholarships/${user.userId}/${_id}`,
+        `https://acvora-07fo.onrender.com/api/savedScholarships/${user.userId}/${_id}`,
         { method }
       );
       if (!res.ok) throw new Error("Failed to update saved scholarships");
@@ -234,7 +234,7 @@ export default function Scholarship() {
     const fetchScholarships = async () => {
       setLoading(true);
       try {
-        const res = await fetch("https://acvora-1.onrender.com/api/scholarships");
+        const res = await fetch("https://acvora-07fo.onrender.com/api/scholarships");
         if (!res.ok) throw new Error("Failed to fetch scholarships");
         const data = await res.json();
         const normalized = data.map((d) => ({ tags: [], ...d }));
@@ -253,7 +253,7 @@ export default function Scholarship() {
     const fetchSaved = async () => {
       if (!user?.userId) return;
       try {
-        const res = await fetch(`https://acvora-1.onrender.com/api/savedScholarships/${user.userId}`);
+        const res = await fetch(`https://acvora-07fo.onrender.com/api/savedScholarships/${user.userId}`);
         if (!res.ok) throw new Error("Failed to fetch saved scholarships");
         const { savedScholarships } = await res.json();
         setSavedScholarships(savedScholarships || []);

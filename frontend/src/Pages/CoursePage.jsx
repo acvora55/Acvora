@@ -107,7 +107,7 @@ export default function CoursePage() {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const res = await fetch(`https://acvora-1.onrender.com/api/courses/${id}`);
+        const res = await fetch(`https://acvora-07fo.onrender.com/api/courses/${id}`);
         const courseData = await res.json();
         console.log("Course fetched:", courseData);
 
@@ -317,7 +317,7 @@ export default function CoursePage() {
                 key={idx}
                 title={spec.name || `Specialization ${idx + 1}`}
                 desc={spec.description}
-                imgSrc={spec.image ? `https://acvora-1.onrender.com/${spec.image}` : SPECIALIZATION_IMAGES[spec.name] || "/default-spec.jpeg"}
+                imgSrc={spec.image ? `https://acvora-07fo.onrender.com/${spec.image}` : SPECIALIZATION_IMAGES[spec.name] || "/default-spec.jpeg"}
               />
             ))}
           </div>
@@ -402,7 +402,7 @@ export default function CoursePage() {
                     <InstituteCard
                       key={idx}
                       title={item.description || course.topInstitutes?.[idx] || `Institute ${idx + 1}`}
-                      img={item.url ? `https://acvora-1.onrender.com/${item.url}` : INSTITUTE_IMAGES[course.topInstitutes?.[idx]] || "/default-institute.jpeg"}
+                      img={item.url ? `https://acvora-07fo.onrender.com/${item.url}` : INSTITUTE_IMAGES[course.topInstitutes?.[idx]] || "/default-institute.jpeg"}
                     />
                   ))}
                 </div>

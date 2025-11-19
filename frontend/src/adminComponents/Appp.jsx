@@ -39,7 +39,7 @@ function App() {
     console.log(data);
     axios.post(`${host}collegeinfo`,data,{"mode":"cors"},{
       'Content-Type': 'application/json',
-      'Origin': 'https://acvora-1.onrender.com', // Set to your React app's domain
+      'Origin': 'https://acvora-07fo.onrender.com', // Set to your React app's domain
     }).then((res)=>{
       console.log(res.data);
     }).catch((err)=>{

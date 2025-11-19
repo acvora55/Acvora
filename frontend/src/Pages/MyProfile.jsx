@@ -55,11 +55,11 @@ const MyProfile = () => {
 
       try {
         // Fetch profile
-        const profileRes = await axios.get(`https://acvora-1.onrender.com/api/profile/${userId}`);
+        const profileRes = await axios.get(`https://acvora-07fo.onrender.com/api/profile/${userId}`);
         setFormData(profileRes.data);
 
         // Fetch counselling bookings
-        const counsellingRes = await axios.get(`https://acvora-1.onrender.com/api/counselling/${userId}`);
+        const counsellingRes = await axios.get(`https://acvora-07fo.onrender.com/api/counselling/${userId}`);
         setCounsellingData(counsellingRes.data.data); // array of counselling bookings
 
         setLoading(false);
@@ -81,7 +81,7 @@ const MyProfile = () => {
 
   const handleSave = async () => {
     try {
-      await axios.put(`https://acvora-1.onrender.com/api/profile/${userId}`, formData);
+      await axios.put(`https://acvora-07fo.onrender.com/api/profile/${userId}`, formData);
       setEditMode(false);
       alert("Profile updated successfully ✅");
     } catch (error) {

@@ -1,1 +1,1 @@
-export const host = "https://acvora-1.onrender.com/"
+export const host = "https://acvora-07fo.onrender.com"

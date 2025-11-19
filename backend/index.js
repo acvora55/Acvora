@@ -42,7 +42,7 @@ cloudinary.config({
 const ALLOWED_ORIGINS = [
   "http://localhost:3000", // 👈 local frontend
   "https://acvora.vercel.app", // 👈 production frontend
-  "https://acvora-1.onrender.com"
+  "https://acvora-07fo.onrender.com"
 ];
 
 // ✅ must be above express.json and all routes

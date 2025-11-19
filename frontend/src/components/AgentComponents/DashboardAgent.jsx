@@ -80,7 +80,7 @@ function StatsCards() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await axios.get("https://acvora-1.onrender.com/api/students/stats");
+        const res = await axios.get("https://acvora-07fo.onrender.com/api/students/stats");
         setStats(res.data);
       } catch (err) {
         console.error("Error fetching stats:", err);
@@ -113,7 +113,7 @@ export default function DashboardAgent() {
 
   const handleDownloadApplication = async () => {
     try {
-      const res = await axios.get("https://acvora-1.onrender.com/api/students/ID123/pdf", {
+      const res = await axios.get("https://acvora-07fo.onrender.com/api/students/ID123/pdf", {
         responseType: "blob",
       });
 
@@ -131,7 +131,7 @@ export default function DashboardAgent() {
   useEffect(() => {
     const fetchRecent = async () => {
       try {
-        const res = await axios.get("https://acvora-1.onrender.com/api/students/recent");
+        const res = await axios.get("https://acvora-07fo.onrender.com/api/students/recent");
         setApplications(res.data);
       } catch (err) {
         console.error("Error fetching recent applications:", err);

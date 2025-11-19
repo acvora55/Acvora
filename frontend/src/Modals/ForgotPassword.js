@@ -11,7 +11,7 @@ const ForgotPassword = ({ closeModal }) => {
     setMessage('');
 
     try {
-      const response = await fetch('https://acvora-1.onrender.com/api/forgot-password', {
+      const response = await fetch('https://acvora-07fo.onrender.com/api/forgot-password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

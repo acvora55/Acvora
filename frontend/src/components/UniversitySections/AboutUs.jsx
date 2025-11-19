@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import "./Aboutus.css";
 
-const API_BASE = import.meta?.env?.VITE_API_BASE || "https://acvora-1.onrender.com";
+const API_BASE = import.meta?.env?.VITE_API_BASE || "https://acvora-07fo.onrender.com";
 
 const getImageUrl = (src) => {
   if (!src) return "";

@@ -17,7 +17,7 @@ const Reports = () => {
   useEffect(() => {
     const fetchReports = async () => {
       try {
-        const res = await axios.get('https://acvora-1.onrender.com/api/students'); // adjust your endpoint
+        const res = await axios.get('https://acvora-07fo.onrender.com/api/students'); // adjust your endpoint
         const formattedReports = res.data.map(student => ({
           id: student.id,
           student: student.name,

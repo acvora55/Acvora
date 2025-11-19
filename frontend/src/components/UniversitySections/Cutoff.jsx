@@ -18,7 +18,7 @@ const Cutoff = ({ universityId }) => {
         setError(null);
 
         const res = await fetch(
-          `https://acvora-1.onrender.com/api/cutoff/${universityId}/cutoffs`
+          `https://acvora-07fo.onrender.com/api/cutoff/${universityId}/cutoffs`
         );
 
         if (!res.ok) {

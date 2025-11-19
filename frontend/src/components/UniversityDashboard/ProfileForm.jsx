@@ -8,7 +8,7 @@ export default function ProfileForm() {
   const [profile, setProfile] = useState(null);
   const [editing, setEditing] = useState(false);
   const [formData, setFormData] = useState({});
-  const baseUrl = "https://acvora-1.onrender.com";
+  const baseUrl = "https://acvora-07fo.onrender.com";
 
   useEffect(() => {
     const fetchProfile = async () => {

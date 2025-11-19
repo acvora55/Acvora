@@ -30,7 +30,7 @@ import logo from "../../src/Images/logoo.png";
 import "./UniversityPage.css";
 import "../components/UniversitySections/CoursesAndFees.css";
 
-const API_BASE = import.meta?.env?.VITE_API_BASE || "https://acvora-1.onrender.com";
+const API_BASE = import.meta?.env?.VITE_API_BASE || "https://acvora-07fo.onrender.com";
 const FALLBACK_BANNER =
   "https://www.shutterstock.com/image-photo/ucla-los-angeles-usa-may-600nw-2397826809.jpg";
 const FALLBACK_LOGO = "https://placehold.co/96x96?text=Logo";

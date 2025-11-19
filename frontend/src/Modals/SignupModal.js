@@ -72,7 +72,7 @@ const handleSubmit = async (e) => {
     });
 
     // 4) Save to MongoDB via backend API
-    const response = await fetch("https://acvora-1.onrender.com/api/signup", {
+    const response = await fetch("https://acvora-07fo.onrender.com/api/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

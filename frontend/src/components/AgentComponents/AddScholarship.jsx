@@ -36,7 +36,7 @@ export default function AddScholarship() {
     const newScholarship = { ...formData, tags };
 
     try {
-      const res = await fetch("https://acvora-1.onrender.com/api/scholarships", {
+      const res = await fetch("https://acvora-07fo.onrender.com/api/scholarships", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newScholarship),

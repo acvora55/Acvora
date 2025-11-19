@@ -8,7 +8,7 @@ export default function Gallery({ universityId }) {
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const baseUrl = "https://acvora-1.onrender.com"; // backend
+  const baseUrl = "https://acvora-07fo.onrender.com"; // backend
 
   // Helper to handle both Cloudinary & local uploads
   const getUrl = (url) => {

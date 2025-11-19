@@ -6,7 +6,7 @@ const ExploreCollegesPage = () => {
   const [colleges, setColleges] = useState([]);
 
   useEffect(() => {
-    fetch("https://acvora-1.onrender.com/api/colleges") // backend URL
+    fetch("https://acvora-07fo.onrender.com/api/colleges") // backend URL
       .then((res) => res.json())
       .then((data) => setColleges(data))
       .catch((err) => console.error("Error fetching colleges:", err));

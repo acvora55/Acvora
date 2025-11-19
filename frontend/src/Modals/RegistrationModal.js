@@ -55,7 +55,7 @@ const RegistrationModal = ({ closeModal }) => {
         location: user.location,
       };
 
-      const resp = await Axios.post("https://acvora-1.onrender.com/register", payload);
+      const resp = await Axios.post("https://acvora-07fo.onrender.com/register", payload);
 
       // success handling
       const newRecord = { ...user, id: new Date().getTime().toString() };

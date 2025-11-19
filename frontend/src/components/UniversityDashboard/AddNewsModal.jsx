@@ -35,8 +35,8 @@ export default function AddNewsModal({ onClose, onNewsAdded, editingNews }) {
       if (image) formData.append("image", image);
 
       const url = editingNews
-        ? `https://acvora-1.onrender.com/api/news/${editingNews._id}`
-        : "https://acvora-1.onrender.com/api/news";
+        ? `https://acvora-07fo.onrender.com/api/news/${editingNews._id}`
+        : "https://acvora-07fo.onrender.com/api/news";
 
       const method = editingNews ? "PUT" : "POST";
 

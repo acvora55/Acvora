@@ -10,7 +10,7 @@ export default function RemoveScholarship() {
   useEffect(() => {
     const fetchScholarships = async () => {
       try {
-        const res = await fetch("https://acvora-1.onrender.com/api/scholarships");
+        const res = await fetch("https://acvora-07fo.onrender.com/api/scholarships");
         if (!res.ok) throw new Error("Failed to fetch scholarships");
         const data = await res.json();
         setScholarships(data);
@@ -29,7 +29,7 @@ export default function RemoveScholarship() {
     if (!confirmDelete) return;
 
     try {
-      const res = await fetch(`https://acvora-1.onrender.com/api/scholarships/${_id}`, {
+      const res = await fetch(`https://acvora-07fo.onrender.com/api/scholarships/${_id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });

@@ -131,7 +131,7 @@ export default function MultiStepForm() {
       // -----------------------------
       // 2. Register university
       // -----------------------------
-      const baseUrl = "https://acvora-1.onrender.com";
+      const baseUrl = "https://acvora-07fo.onrender.com";
 
       const res = await fetch(`${baseUrl}/api/university-registration`, {
         method: "POST",

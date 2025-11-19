@@ -30,7 +30,7 @@ const Form = () => {
 
   const sendData = (e) => {
     e.preventDefault();
-    Axios.post("https://acvora-1.onrender.com/get-more-college-options", formData)
+    Axios.post("https://acvora-07fo.onrender.com/get-more-college-options", formData)
       .then(() => {
         showToast("Form submitted successfully!", "success");
         setFormData({

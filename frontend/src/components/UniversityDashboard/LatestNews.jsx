@@ -13,7 +13,7 @@ export default function LatestNews() {
   useEffect(() => {
     if (!universityId) return;
 
-    fetch(`https://acvora-1.onrender.com/api/universities/${universityId}/news`)
+    fetch(`https://acvora-07fo.onrender.com/api/universities/${universityId}/news`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setNews(data.news);
@@ -38,7 +38,7 @@ export default function LatestNews() {
     if (!window.confirm("Are you sure you want to delete this news?")) return;
     try {
       const res = await fetch(
-        `https://acvora-1.onrender.com/api/universities/${universityId}/news/${id}`,
+        `https://acvora-07fo.onrender.com/api/universities/${universityId}/news/${id}`,
         {
           method: "DELETE",
         }
