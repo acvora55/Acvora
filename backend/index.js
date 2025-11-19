@@ -41,11 +41,12 @@ cloudinary.config({
 /* ------------------------ CORS (FIXED) ------------------------ */
 const ALLOWED_ORIGINS = [
   "http://localhost:3000",
-  "https://acvora.vercel.app",        
+  "https://acvora.vercel.app",
+  "https://acvora-theta.vercel.app",
   "https://acvora-git-main-acvoras-projects.vercel.app",
-  "https://acvora-h45fy0xph-acvoras-projects.vercel.app",
-  "https://acvora-07fo.onrender.com"  
+  "https://acvora-h45fy0xph-acvoras-projects.vercel.app"
 ];
+
 
 
 
