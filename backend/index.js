@@ -40,10 +40,11 @@ cloudinary.config({
 
 /* ------------------------ CORS (FIXED) ------------------------ */
 const ALLOWED_ORIGINS = [
-  "http://localhost:3000", // 👈 local frontend
-  "https://acvora.vercel.app", // 👈 production frontend
+  "http://localhost:3000",
+  "https://acvora-theta.vercel.app",
   "https://acvora-07fo.onrender.com"
 ];
+
 
 // ✅ must be above express.json and all routes
 app.use(
