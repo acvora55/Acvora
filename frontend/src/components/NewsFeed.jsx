@@ -320,9 +320,9 @@ const NewsFeed = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gray-100 text-gray-800 font-sans flex flex-col">
+      <div className="pt-24 min-h-screen bg-gray-100 text-gray-800 font-sans flex flex-col">
         {/* Quick Filter Bar */}
-        <div className="mt-5 ml-4 mr-4 flex flex-col sm:flex-row sm:items-center gap-4 px-4 sm:px-0">
+        <div className="ml-4 mr-4 flex flex-col sm:flex-row sm:items-center gap-4 px-4 sm:px-0">
           {/* Categories */}
           <div className="flex overflow-x-auto space-x-2 sm:space-x-4 pb-2 sm:pb-0 text-sm sm:text-base">
             {categories.map((cat) => (
@@ -366,7 +366,7 @@ const NewsFeed = () => {
         {/* Content Section */}
         <div className="flex flex-col lg:flex-row max-w-7xl mx-auto pt-6 px-4 gap-6 flex-1">
           {/* Left Sidebar Filters */}
-          <aside className="w-full lg:w-72 order-1 lg:order-none sticky top-20 self-start bg-white rounded-lg p-4 sm:p-6 shadow-md space-y-6 sm:space-y-8 h-max">
+          <aside className="w-full lg:w-72 order-1 lg:order-none sticky top-24 self-start bg-white rounded-lg p-4 sm:p-6 shadow-md space-y-6 sm:space-y-8 h-max">
             {/* Filter by Type */}
             <section aria-label="Filter by Type">
               <h2 className="text-lg font-semibold mb-3">Type</h2>
@@ -565,7 +565,7 @@ const NewsFeed = () => {
           </main>
 
           {/* Right Sidebar */}
-          <aside className="w-full lg:w-72 order-3 lg:order-none sticky top-20 self-start bg-white rounded-lg p-4 sm:p-6 shadow-md space-y-6 sm:space-y-10 h-max">
+          <aside className="w-full lg:w-72 order-3 lg:order-none sticky top-24 self-start bg-white rounded-lg p-4 sm:p-6 shadow-md space-y-6 sm:space-y-10 h-max">
             {/* Featured / Sponsored Universities */}
             <section aria-label="Featured or Sponsored Universities">
               <h2 className="text-lg font-semibold mb-4">Featured / Sponsored Universities</h2>

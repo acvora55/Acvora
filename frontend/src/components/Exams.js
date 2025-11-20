@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ChevronDown, Check, Filter } from "lucide-react";
+import { ChevronDown, Check, Filter, Search } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "../components/Footer";
@@ -189,9 +189,9 @@ const Examain = () => {
   };
 
   const examData = [
-    { examName: "JEE Main", conductingBody: "NTA", nextEvent: "Registration Open – Dec 2025", modeLevel: "Online, UG", states: [] },
-    { examName: "NEET", conductingBody: "NTA", nextEvent: "Exam – Sep 2025", modeLevel: "Offline, UG", states: [] },
-    { examName: "MHT CET", conductingBody: "Maharashtra State", nextEvent: "Deadline – Apr 2025", modeLevel: "Online, UG", states: ["Maharashtra"] },
+    { examName: "JEE Main", conductingBody: "NTA", nextEvent: "Registration Open – Jan 2026", modeLevel: "Online, UG", states: [] },
+    { examName: "NEET", conductingBody: "NTA", nextEvent: "Exam – May 2026", modeLevel: "Offline, UG", states: [] },
+    { examName: "MHT CET", conductingBody: "Maharashtra State", nextEvent: "Registration Open – Feb 2026", modeLevel: "Online, UG", states: ["Maharashtra"] },
   ];
 
   const visibleExams = examData.filter((exam) =>
@@ -201,7 +201,7 @@ const Examain = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gray-100 text-gray-900 flex flex-col md:flex-row pb-32">
+      <div className="pt-24 min-h-screen bg-gray-100 text-gray-900 flex flex-col md:flex-row pb-32">
         {/* Mobile filter toggle */}
         <div className="md:hidden p-4 flex justify-end">
           <button
@@ -236,11 +236,9 @@ const Examain = () => {
                 placeholder="Search Exam by Name"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full p-3 rounded-md border border-gray-300 focus:border-yellow-500 focus:outline-none shadow-sm text-gray-900 text-sm sm:text-base"
+                className="w-full p-3 rounded-md border border-gray-300 focus:border-yellow-500 focus:outline-none shadow-sm text-gray-900 text-sm sm:text-base pr-10"
               />
-              <span className="absolute right-3 top-3 text-gray-800 font-bold">
-                <i className="fa-solid fa-magnifying-glass"></i>
-              </span>
+              <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4" />
             </div>
 
             {/* Tabs */}

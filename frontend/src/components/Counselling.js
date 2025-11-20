@@ -23,7 +23,7 @@ function HeroSection() {
     }
   };
   return (
-    <section className="text-center py-5 px-6">
+    <section className="text-center pt-24 pb-5 px-6"> {/* Increased top padding to pt-24 (6rem) to clear fixed navbar */}
       <motion.h1
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import './ExploreCoursesPage.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "./ExploreCoursesPage.css";
 import Navbar from "../components/Navbar";
 
 const CourseExplorer = () => {
   const [courses, setCourses] = useState([]);
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [activeAccordion, setActiveAccordion] = useState(null);
   const [filters, setFilters] = useState({
     streams: [],
@@ -28,7 +28,6 @@ const CourseExplorer = () => {
   const [availableStates, setAvailableStates] = useState([]);
   const [expandedCourseId, setExpandedCourseId] = useState(null);
   const [savedCourses, setSavedCourses] = useState(new Set());
-  // ✅ New: userId state
   const [userId, setUserId] = useState(localStorage.getItem("userId"));
 
   const navigate = useNavigate();
@@ -36,32 +35,36 @@ const CourseExplorer = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await axios.get('https://acvora-07fo.onrender.com/api/courses');
-        const data = res.data;
-        console.log('First course in response:', data[0]); // Inspect first item
+        const res = await axios.get(
+          "https://acvora-07fo.onrender.com/api/courses"
+        );
+        const data = res.data || [];
         setCourses(data);
-        setAvailableStreams([...new Set(data.map(c => c.stream))].sort());
-        setAvailableCourseTypes([...new Set(data.map(c => c.degreeType))].sort());
-        setAvailableLevels([...new Set(data.map(c => c.level))].sort());
-        setAvailableExams([...new Set(data.flatMap(c => c.exams || []))].sort());
-        setAvailableSpecializations([
-          ...new Set(data.flatMap(c => (c.specializations || []).map(spec => spec.name)))
-        ].sort());
-        setAvailableCities([...new Set(data.map(c => c.city).filter(Boolean))].sort());
-        setAvailableStates([...new Set(data.map(c => c.state).filter(Boolean))].sort());
+        setAvailableStreams([...new Set(data.map((c) => c.stream))].sort());
+        setAvailableCourseTypes(
+          [...new Set(data.map((c) => c.degreeType))].sort()
+        );
+        setAvailableLevels([...new Set(data.map((c) => c.level))].sort());
+        setAvailableExams(
+          [...new Set(data.flatMap((c) => c.exams || []))].sort()
+        );
+        setAvailableSpecializations(
+          [
+            ...new Set(
+              data.flatMap((c) => (c.specializations || []).map((s) => s.name))
+            ),
+          ].sort()
+        );
+        setAvailableCities(
+          [...new Set(data.map((c) => c.city).filter(Boolean))].sort()
+        );
+        setAvailableStates(
+          [...new Set(data.map((c) => c.state).filter(Boolean))].sort()
+        );
       } catch (err) {
-        console.error('Error fetching courses:', err);
-        const sampleData = [];
-        setCourses(sampleData);
-        setAvailableStreams([...new Set(sampleData.map(c => c.stream))].sort());
-        setAvailableCourseTypes([...new Set(sampleData.map(c => c.degreeType))].sort());
-        setAvailableLevels([...new Set(sampleData.map(c => c.level))].sort());
-        setAvailableExams([...new Set(sampleData.flatMap(c => c.exams || []))].sort());
-        setAvailableSpecializations([
-          ...new Set(sampleData.flatMap(c => (c.specializations || []).map(spec => spec.name)))
-        ].sort());
-        setAvailableCities([...new Set(sampleData.map(c => c.city).filter(Boolean))].sort());
-        setAvailableStates([...new Set(sampleData.map(c => c.state).filter(Boolean))].sort());
+        console.error("Error fetching courses:", err);
+        // graceful fallback
+        setCourses([]);
       } finally {
         setLoading(false);
       }
@@ -69,53 +72,53 @@ const CourseExplorer = () => {
     fetchCourses();
   }, []);
 
-  // ✅ Updated: Load saved courses (API + localStorage fallback)
   useEffect(() => {
-    // Fallback to localStorage
     const saved = localStorage.getItem("savedCourses");
     if (saved) {
-      const savedArray = JSON.parse(saved);
-      setSavedCourses(new Set(savedArray.map(c => c._id || c.id)));
+      try {
+        const savedArray = JSON.parse(saved);
+        setSavedCourses(new Set(savedArray.map((c) => c._id || c.id)));
+      } catch (e) {
+        console.warn("Could not parse savedCourses from localStorage");
+      }
     }
 
-    // Fetch from backend if logged in
     const uid = localStorage.getItem("userId");
     if (uid) {
       setUserId(uid);
-      axios.get(`https://acvora-07fo.onrender.com/api/savedCourses/${uid}`)
-        .then(res => {
-          setSavedCourses(new Set(res.data.map(c => c.courseId.toString())));
+      axios
+        .get(`https://acvora-07fo.onrender.com/api/savedCourses/${uid}`)
+        .then((res) => {
+          // backend returns array of saved course objects
+          setSavedCourses(new Set(res.data.map((c) => c.courseId.toString())));
         })
-        .catch(err => {
-          console.error('Error fetching saved courses:', err);
-          // Fallback to localStorage already handled above
+        .catch((err) => {
+          console.error("Error fetching saved courses:", err);
         });
     }
   }, []);
 
-  const toggleAccordion = (category) => {
-    setActiveAccordion(activeAccordion === category ? null : category);
-  };
+  const toggleAccordion = (category) =>
+    setActiveAccordion((prev) => (prev === category ? null : category));
 
   const handleFilterChange = (category, value, isMulti = true) => {
-    setFilters(prev => {
+    setFilters((prev) => {
       if (!isMulti) {
         return { ...prev, [category]: value ? [value] : [] };
       }
+      const present = prev[category].includes(value);
       return {
         ...prev,
-        [category]: prev[category].includes(value)
-          ? prev[category].filter(v => v !== value)
+        [category]: present
+          ? prev[category].filter((v) => v !== value)
           : [...prev[category], value],
       };
     });
   };
 
-  const handleCourseClick = (courseId) => {
-    setExpandedCourseId(expandedCourseId === courseId ? null : courseId);
-  };
+  const handleCourseClick = (courseId) =>
+    setExpandedCourseId((prev) => (prev === courseId ? null : courseId));
 
-  // ✅ Updated: Use API for toggle
   const handleSaveToggle = async (course) => {
     if (!userId) {
       alert("Please login to save courses");
@@ -128,109 +131,242 @@ const CourseExplorer = () => {
 
     try {
       if (isSaved) {
-        // Remove
-        await axios.delete(`https://acvora-07fo.onrender.com/api/savedCourses/${userId}/${courseId}`);
-        setSavedCourses(prev => {
+        await axios.delete(
+          `https://acvora-07fo.onrender.com/api/savedCourses/${userId}/${courseId}`
+        );
+        setSavedCourses((prev) => {
           const newSet = new Set(prev);
           newSet.delete(courseId);
           return newSet;
         });
       } else {
-        // Add
-        await axios.post(`https://acvora-07fo.onrender.com/api/savedCourses/${userId}`, {
-          courseId: course._id || course.id,
-          courseTitle: course.courseTitle,
-          eligibility: course.eligibility
-        });
-        setSavedCourses(prev => new Set([...prev, courseId]));
+        await axios.post(
+          `https://acvora-07fo.onrender.com/api/savedCourses/${userId}`,
+          {
+            courseId: course._id || course.id,
+            courseTitle: course.courseTitle,
+            eligibility: course.eligibility,
+          }
+        );
+        setSavedCourses((prev) => new Set([...prev, courseId]));
       }
     } catch (err) {
-      console.error('Error toggling saved course:', err);
+      console.error("Error toggling saved course:", err);
       alert("Something went wrong. Please try again.");
     }
   };
 
-  const filteredCourses = courses.filter(course => {
-    const matchesSearch = course.courseTitle.toLowerCase().includes(searchText.toLowerCase());
+  const filteredCourses = courses.filter((course) => {
+    const matchesSearch = course.courseTitle
+      .toLowerCase()
+      .includes(searchText.toLowerCase());
     if (filters.specializations.length > 0) {
-      return matchesSearch && 
-        (course.specializations &&
-          course.specializations.some(spec => filters.specializations.includes(spec.name)));
+      return (
+        matchesSearch &&
+        course.specializations &&
+        course.specializations.some((spec) =>
+          filters.specializations.includes(spec.name)
+        )
+      );
     }
     const matchesFilters =
       (!filters.streams.length || filters.streams.includes(course.stream)) &&
-      (!filters.courseType.length || filters.courseType.includes(course.degreeType)) &&
+      (!filters.courseType.length ||
+        filters.courseType.includes(course.degreeType)) &&
       (!filters.courseLevel.length || filters.courseLevel.includes(course.level)) &&
-      (!filters.exams.length || (course.exams && course.exams.some(exam => filters.exams.includes(exam)))) &&
-      (!filters.courses.length || filters.courses.includes(course.courseTitle)) &&
+      (!filters.exams.length ||
+        (course.exams && course.exams.some((exam) => filters.exams.includes(exam)))) &&
+      (!filters.courses.length ||
+        filters.courses.includes(course.courseTitle)) &&
       (!filters.states.length || filters.states.includes(course.state)) &&
       (!filters.cities.length || filters.cities.includes(course.city));
     return matchesSearch && matchesFilters;
   });
 
+  /* ----------------
+     UI Subcomponents
+     (unchanged card logic — styling updated via CSS)
+     ----------------*/
   const SidebarFilters = () => {
     const filterCategories = [
-      { key: 'streams', label: 'Stream', options: availableStreams },
-      { key: 'courseType', label: 'Course Type', options: availableCourseTypes },
-      { key: 'courseLevel', label: 'Course Level', options: availableLevels },
+      { key: "streams", label: "Stream", options: availableStreams },
+      { key: "courseType", label: "Course Type", options: availableCourseTypes },
+      { key: "courseLevel", label: "Course Level", options: availableLevels },
     ];
     return (
-      <div className="ce-sidebar md:w-1/4">
-        <h2>Filters</h2>
-        {filterCategories.map(category => (
+      <aside className="ce-sidebar md:w-1/4">
+        <div className="ce-sidebar-header">
+          <h2>Filters</h2>
+          <button
+            className="ce-clear-filters"
+            onClick={() =>
+              setFilters({
+                streams: [],
+                courseType: [],
+                courseLevel: [],
+                states: [],
+                cities: [],
+                exams: [],
+                courses: [],
+                specializations: [],
+              })
+            }
+            title="Clear all filters"
+          >
+            Clear
+          </button>
+        </div>
+
+        {filterCategories.map((category) => (
           <div key={category.key} className="ce-accordion">
-            <button onClick={() => toggleAccordion(category.key)} className="ce-accordion-btn">
-              {category.label}
-              <span>{activeAccordion === category.key ? '▲' : '▼'}</span>
+            <button
+              onClick={() => toggleAccordion(category.key)}
+              className="ce-accordion-btn"
+              aria-expanded={activeAccordion === category.key}
+            >
+              <span>{category.label}</span>
+              <span className="ce-accordion-caret">
+                {activeAccordion === category.key ? "▲" : "▼"}
+              </span>
             </button>
             {activeAccordion === category.key && (
               <div className="ce-accordion-options">
-                {category.options.map(option => (
-                  <label key={option}>
-                    <input
-                      type="checkbox"
-                      checked={filters[category.key].includes(option)}
-                      onChange={() => handleFilterChange(category.key, option)}
-                    />
-                    {option}
-                  </label>
-                ))}
+                {category.options.length === 0 ? (
+                  <div className="ce-empty-option">No options</div>
+                ) : (
+                  category.options.map((option) => (
+                    <label className="ce-option-row" key={option}>
+                      <input
+                        type="checkbox"
+                        checked={filters[category.key].includes(option)}
+                        onChange={() => handleFilterChange(category.key, option)}
+                      />
+                      <span className="ce-option-label">{option}</span>
+                    </label>
+                  ))
+                )}
               </div>
             )}
           </div>
         ))}
-      </div>
+
+        {/* quick extra filters */}
+        <div className="ce-accordion">
+          <button
+            onClick={() => toggleAccordion("exams")}
+            className="ce-accordion-btn"
+            aria-expanded={activeAccordion === "exams"}
+          >
+            <span>Entrance / Exams</span>
+            <span>{activeAccordion === "exams" ? "▲" : "▼"}</span>
+          </button>
+          {activeAccordion === "exams" && (
+            <div className="ce-accordion-options">
+              {availableExams.map((ex) => (
+                <label key={ex} className="ce-option-row">
+                  <input
+                    type="checkbox"
+                    checked={filters.exams.includes(ex)}
+                    onChange={() => handleFilterChange("exams", ex)}
+                  />
+                  <span className="ce-option-label">{ex}</span>
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+      </aside>
     );
   };
 
   const SearchFilters = () => {
     const topFilters = [
-      { key: 'courses', label: 'Course', options: courses.map(c => c.courseTitle) },
-      { key: 'states', label: 'State', options: availableStates },
-      { key: 'cities', label: 'City', options: availableCities },
-      { key: 'exams', label: 'Entrance/Exam Accepted', options: availableExams },
+      { key: "courses", label: "Course", options: courses.map((c) => c.courseTitle) },
+      { key: "states", label: "State", options: availableStates },
+      { key: "cities", label: "City", options: availableCities },
+      { key: "exams", label: "Entrance/Exam Accepted", options: availableExams },
     ];
     return (
       <div className="ce-searchbar">
-        <div className="flex flex-col md:flex-row gap-4 items-center">
-          <input
-            type="text"
-            placeholder="Find your desired course"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            className="ce-search-input"
-          />
-          <button className="ce-btn-orange">Search</button>
+        <div className="ce-search-top">
+          <div className="ce-search-left">
+            <input
+              type="text"
+              placeholder="Find your desired course (e.g. B.Tech, MBA, Data Science)"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              className="ce-search-input"
+            />
+            <button
+              className="ce-btn-orange"
+              onClick={() => {
+                /* we already filter locally; keep for potential analytics */
+              }}
+            >
+              Search
+            </button>
+          </div>
+
+          <div className="ce-search-right">
+            <div className="ce-stats">
+              <div className="ce-stat">
+                <div className="ce-stat-number">
+                  {loading ? "—" : courses.length}
+                </div>
+                <div className="ce-stat-label">Total courses</div>
+              </div>
+              <div className="ce-stat">
+                <div className="ce-stat-number">{filteredCourses.length}</div>
+                <div className="ce-stat-label">Matching</div>
+              </div>
+            </div>
+
+            <div className="ce-sort">
+              <label className="ce-sort-label">Sort:</label>
+              <select
+                className="ce-sort-select"
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === "alpha") {
+                    setCourses((prev) =>
+                      [...prev].sort((a, b) =>
+                        (a.courseTitle || "").localeCompare(b.courseTitle || "")
+                      )
+                    );
+                  } else if (val === "duration") {
+                    setCourses((prev) =>
+                      [...prev].sort(
+                        (a, b) =>
+                          (a.duration && parseFloat(a.duration)) -
+                          (b.duration && parseFloat(b.duration))
+                      )
+                    );
+                  } else {
+                    // default - no-op
+                  }
+                }}
+              >
+                <option value="">Recommended</option>
+                <option value="alpha">A → Z</option>
+                <option value="duration">Duration (short → long)</option>
+              </select>
+            </div>
+          </div>
         </div>
+
         <div className="ce-top-filters">
-          {topFilters.map(filter => (
+          {topFilters.map((filter) => (
             <select
               key={filter.key}
               onChange={(e) => handleFilterChange(filter.key, e.target.value, false)}
+              className="ce-top-filter-select"
+              value={filters[filter.key][0] || ""}
             >
               <option value="">{filter.label}</option>
-              {filter.options.map(option => (
-                <option key={option} value={option}>{option}</option>
+              {filter.options.map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
               ))}
             </select>
           ))}
@@ -242,40 +378,60 @@ const CourseExplorer = () => {
   const SpecializationsSection = () => {
     let filteredSpecs = [];
     if (filters.courses.length > 0) {
-      const selectedCourses = courses.filter(course => filters.courses.includes(course.courseTitle));
-      filteredSpecs = [
-        ...new Set(selectedCourses.flatMap(course => (course.specializations || []).map(spec => spec.name)))
-      ].sort();
-    } else {
-      const filteredCourses = courses.filter(course => 
-        (!filters.streams.length || filters.streams.includes(course.stream)) &&
-        (!filters.courseType.length || filters.courseType.includes(course.degreeType))
+      const selectedCourses = courses.filter((course) =>
+        filters.courses.includes(course.courseTitle)
       );
       filteredSpecs = [
-        ...new Set(filteredCourses.flatMap(course => (course.specializations || []).map(spec => spec.name)))
+        ...new Set(
+          selectedCourses.flatMap((course) =>
+            (course.specializations || []).map((spec) => spec.name)
+          )
+        ),
+      ].sort();
+    } else {
+      const filteredCourses = courses.filter(
+        (course) =>
+          (!filters.streams.length || filters.streams.includes(course.stream)) &&
+          (!filters.courseType.length ||
+            filters.courseType.includes(course.degreeType))
+      );
+      filteredSpecs = [
+        ...new Set(
+          filteredCourses.flatMap((course) =>
+            (course.specializations || []).map((spec) => spec.name)
+          )
+        ),
       ].sort();
     }
     if (filteredSpecs.length === 0) return null;
     return (
       <div className="ce-specializations mt-4">
-        <span className="font-bold mr-2">Choose Specialization:</span>
-        {filteredSpecs.map(spec => (
-          <span
-            key={spec}
-            className={`ce-spec-tag inline-block px-3 py-1 mr-2 mb-2 rounded-full cursor-pointer ${filters.specializations.includes(spec) ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800'}`}
-            onClick={() => handleFilterChange('specializations', spec)}
-          >
-            {spec}
-          </span>
-        ))}
+        <div className="ce-spec-header">
+          <strong>Specializations</strong>
+          <span className="ce-spec-sub">Choose one or more</span>
+        </div>
+        <div className="ce-spec-list">
+          {filteredSpecs.map((spec) => (
+            <button
+              type="button"
+              key={spec}
+              className={`ce-spec-tag ${
+                filters.specializations.includes(spec) ? "active" : ""
+              }`}
+              onClick={() => handleFilterChange("specializations", spec)}
+            >
+              {spec}
+            </button>
+          ))}
+        </div>
       </div>
     );
   };
 
   const BookmarkIcon = ({ isSaved }) => (
     <div
-      className={`ce-save-icon-wrapper ${isSaved ? 'saved' : ''}`}
-      title={isSaved ? 'Saved' : 'Save Course'}
+      className={`ce-save-icon-wrapper ${isSaved ? "saved" : ""}`}
+      title={isSaved ? "Saved" : "Save Course"}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -298,13 +454,10 @@ const CourseExplorer = () => {
     const id = course._id || course.id;
 
     return (
-      <div
-        className="ce-course-card cursor-pointer"
-        onClick={() => handleCourseClick(id)}
-      >
+      <div className="ce-course-card cursor-pointer" onClick={() => handleCourseClick(id)}>
         <h3 className="ce-course-title">{course.courseTitle}</h3>
         <div className="ce-tags">
-          {[course.duration, course.degreeType, course.level].filter(Boolean).map(tag => (
+          {[course.duration, course.degreeType, course.level].filter(Boolean).map((tag) => (
             <span key={tag} className="ce-tag">{tag}</span>
           ))}
         </div>
@@ -316,7 +469,6 @@ const CourseExplorer = () => {
           ))}
         </div>
 
-        {/* Expanded section for top institutes */}
         {expandedCourseId === id && (
           <div className="ce-top-institutes mt-4 p-4 border-t border-gray-200 bg-gray-50 rounded-lg">
             <h4 className="font-semibold text-lg mb-3">
@@ -362,7 +514,7 @@ const CourseExplorer = () => {
             <button
               className="ce-link"
               onClick={(e) => {
-                e.stopPropagation(); // stop collapsing
+                e.stopPropagation();
                 navigate(`/coursepage/${id}`);
               }}
             >
@@ -371,7 +523,7 @@ const CourseExplorer = () => {
             <button
               className="ce-btn-apply"
               onClick={(e) => {
-                e.stopPropagation(); // stop collapsing
+                e.stopPropagation();
                 navigate(`/apply/${id}`);
               }}
             >
@@ -383,37 +535,45 @@ const CourseExplorer = () => {
     );
   };
 
+  /* ----------------
+     Page Render
+     ----------------*/
   return (
     <>
-    <Navbar/>
-    <div className="course-explorer">
-      <div className="ce-main">
-        <h1 className="ce-title">Top Courses in Indian Colleges 2025</h1>
-        <div className="flex flex-col md:flex-row gap-6">
-          <SidebarFilters />
-          <div className="md:w-3/4">
-            <SearchFilters />
-            {(filters.streams.length > 0 || filters.courses.length > 0) && <SpecializationsSection />}
-            <div className="grid grid-cols-1 gap-6">
-              {loading ? (
-                <p className="text-center text-gray-500 py-8">Loading courses...</p>
-              ) : filteredCourses.length === 0 ? (
-                <p className="text-center text-gray-500 py-8">No courses found.</p>
-              ) : (
-                filteredCourses.map(course => (
-                  <CourseCard
-                    key={course._id || course.id}
-                    course={course}
-                    isSaved={savedCourses.has((course._id || course.id).toString())}
-                    onSaveToggle={handleSaveToggle}
-                  />
-                ))
-              )}
-            </div>
+      <Navbar />
+      <div className="course-explorer">
+        <div className="ce-main container">
+          <header className="ce-header">
+            <h1 className="ce-title">Top Courses in Indian Colleges 2025</h1>
+            <p className="ce-subtitle">Explore degrees, specializations & top institutes — filter to refine results.</p>
+          </header>
+
+          <div className="flex flex-col md:flex-row gap-6">
+            <SidebarFilters />
+            <main className="md:w-3/4">
+              <SearchFilters />
+              {(filters.streams.length > 0 || filters.courses.length > 0) && <SpecializationsSection />}
+
+              <div className="ce-list grid grid-cols-1 gap-6">
+                {loading ? (
+                  <div className="ce-loading">Loading courses...</div>
+                ) : filteredCourses.length === 0 ? (
+                  <div className="ce-empty">No courses found.</div>
+                ) : (
+                  filteredCourses.map((course) => (
+                    <CourseCard
+                      key={course._id || course.id}
+                      course={course}
+                      isSaved={savedCourses.has((course._id || course.id).toString())}
+                      onSaveToggle={handleSaveToggle}
+                    />
+                  ))
+                )}
+              </div>
+            </main>
           </div>
         </div>
       </div>
-    </div>
     </>
   );
 };

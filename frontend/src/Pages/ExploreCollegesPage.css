@@ -4,7 +4,10 @@
 }
 
 .explore-content {
-  padding: 1rem;
+  padding-top: 6rem; /* Increased top padding to clear fixed navbar (pt-24 equivalent) */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
   width: 100%;
   margin: 0 auto;
 }
@@ -170,5 +173,9 @@
   .college-grid {
     width: 100%;
     grid-template-columns: 1fr;
+  }
+
+  .explore-content {
+    padding-top: 5rem; /* Slightly less on mobile if needed */
   }
 }

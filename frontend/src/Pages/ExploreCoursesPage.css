@@ -1,357 +1,310 @@
-/* ==== Global Layout ==== */
+/* ===============================
+   PROFESSIONAL COURSE EXPLORER UI
+   (Updated — Sidebar + Search + Layout)
+================================*/
+
+/* Basic resets & container */
+* { box-sizing: border-box; }
+body, html { margin: 0; padding: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #111827; }
+
+/* Outer layout */
 .course-explorer {
-  min-height: 100vh;
-  background-color: #f9fafb;
-  font-family: 'Inter', sans-serif;
-  display: flex;
-  flex-direction: column;
+  background: #f5f7fa;
+  padding: 120px 16px 40px; /* increased top padding */
+  min-height: calc(100vh - 72px);
 }
 
-/* ==== Main Wrapper ==== */
-.ce-main {
-  max-width: 1800px;
-  margin: 0 auto;
-  padding: 1.5rem;
-  flex: 1;
+/* central container (optional, keep consistent with your project) */
+.container { max-width: 1200px; margin: 0 auto; }
+
+/* header */
+.ce-header { 
+  text-align: center; 
+  margin-bottom: 20px;
+  padding: 0;
 }
 .ce-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  text-align: center; /* Center title on smaller screens */
+  font-size: 32px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  padding: 0;
+}
+.ce-subtitle {
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 14px;
 }
 
-/* ==== Sidebar ==== */
+/* main wrapper */
+.ce-main { width: 100%; }
+
+/* ===============================
+   SIDEBAR FILTERS
+================================*/
 .ce-sidebar {
-  background: #fff;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 6px 20px rgba(16,24,40,0.06);
   height: fit-content;
+  position: sticky;
+  top: 86px;
+  border: 1px solid rgba(15, 23, 42, 0.04);
 }
+
+.ce-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
 .ce-sidebar h2 {
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+  font-size: 18px;
+  margin: 0;
+  color: #0f172a;
 }
-.ce-accordion {
-  border-bottom: 1px solid #e5e7eb;
+
+.ce-clear-filters {
+  background: transparent;
+  border: none;
+  color: #6b7280;
+  font-size: 13px;
+  cursor: pointer;
 }
+
+/* Accordion */
+.ce-accordion { margin-bottom: 12px; }
 .ce-accordion-btn {
   width: 100%;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px;
+  background: #fbfdff;
+  border-radius: 8px;
+  border: 1px solid #eef2ff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.60rem 0;
-  font-size: 0.840rem;
-  font-weight: 500;
-  color: #374151;
-  background: none;
-  border: none;
   cursor: pointer;
 }
+.ce-accordion-btn:hover { transform: translateY(-1px); transition: transform 0.15s ease; }
+.ce-accordion-caret { color: #6b7280; font-size: 12px; }
+
 .ce-accordion-options {
-  padding-bottom: 0.75rem;
-}
-.ce-accordion-options label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  padding: 0.5rem 0;
-}
-.ce-accordion-options input[type="checkbox"] {
-  accent-color: #f97316;
-  width: 1rem;
-  height: 1rem;
+  padding: 10px 12px;
+  margin-top: 8px;
+  background: #ffffff;
+  border-radius: 8px;
+  border-left: 3px solid rgba(99,102,241,0.12);
 }
 
-/* ==== Search + Filters ==== */
+.ce-empty-option { color: #6b7280; font-size: 13px; }
+
+/* Option row */
+.ce-option-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 14px; color: #374151; cursor: pointer; }
+.ce-option-row input { width: 16px; height: 16px; }
+.ce-option-label { user-select: none; }
+
+/* ===============================
+   SEARCH BAR & TOP FILTERS
+================================*/
 .ce-searchbar {
-  background: #fff;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  border-radius: 0.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 6px 20px rgba(16,24,40,0.06);
+  margin-bottom: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.04);
 }
+
+.ce-search-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ce-search-left {
+  display: flex;
+  gap: 10px;
+  flex: 1 1 480px;
+  align-items: center;
+}
+
 .ce-search-input {
-  flex: 1;
-  padding: 0.75rem;
-  border: 1px solid #fdba74;
-  border-radius: 0.375rem;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ef;
+  font-size: 15px;
+  background: #f8fafc;
   outline: none;
-  font-size: 0.875rem;
 }
 .ce-search-input:focus {
-  border-color: #f97316;
-  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.3);
-}
-.ce-btn-orange {
-  background-color: #f97316;
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.375rem;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  font-size: 0.875rem;
-}
-.ce-btn-orange:hover {
-  background-color: #ea580c;
-}
-.ce-top-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: center; /* Center filters on smaller screens */
-}
-.ce-top-filters select {
-  padding: 0.5rem 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  color: #374151;
+  box-shadow: 0 0 0 6px rgba(99,102,241,0.06);
+  border-color: #6366f1;
   background: #fff;
-  min-width: 120px;
-  margin-top: 1rem;
-}
-.ce-top-filters select:focus {
-  border-color: #f97316;
-  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.3);
 }
 
-/* ==== Course Cards ==== */
+.ce-btn-orange {
+  padding: 10px 16px;
+  background: #eab308;
+  color: #111827;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ce-btn-orange:hover { filter: brightness(0.96); }
+
+/* right side - stats + sort */
+.ce-search-right { display:flex; align-items:center; gap:12px; }
+
+.ce-stats { display:flex; gap:12px; align-items:center; }
+.ce-stat { text-align:center; padding:6px 10px; }
+.ce-stat-number { font-weight:700; font-size:16px; color:#0f172a; }
+.ce-stat-label { font-size:12px; color:#6b7280; }
+
+/* sort select */
+.ce-sort { display:flex; align-items:center; gap:8px; }
+.ce-sort-label { font-size:13px; color:#6b7280; margin-right:4px; }
+.ce-sort-select {
+  padding: 8px 10px;
+  border-radius:8px;
+  border:1px solid #e6e9ef;
+  background:#fff;
+}
+
+/* top filters row */
+.ce-top-filters {
+  margin-top: 14px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.ce-top-filter-select {
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #e6e9ef;
+  min-width:180px;
+  background:#fff;
+}
+
+/* ===============================
+   SPECIALIZATIONS
+================================*/
+.ce-specializations {
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(16,24,40,0.06);
+  margin-bottom: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+}
+.ce-spec-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.ce-spec-sub { color: #6b7280; font-size:13px; margin-left:8px; }
+.ce-spec-list { display:flex; gap:8px; flex-wrap:wrap; }
+.ce-spec-tag {
+  border-radius:999px;
+  padding:8px 12px;
+  background:#f3f4f6;
+  color:#374151;
+  border: none;
+  cursor:pointer;
+  font-size:13px;
+}
+.ce-spec-tag.active { background: #6366f1; color: #fff; box-shadow: 0 6px 18px rgba(99,102,241,0.12); }
+
+/* ===============================
+   COURSE LIST / CARD AREA
+   (Card styles left mostly as-is but included small spacing helpers)
+================================*/
+.ce-list { margin-top: 8px; }
+
+.ce-loading, .ce-empty {
+  padding: 30px;
+  text-align:center;
+  color: #6b7280;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(16,24,40,0.06);
+}
+
+/* Use your existing card styling, but add spacing wrapper */
 .ce-course-card {
   background: #fff;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 320px; /* Consistent height */
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  box-shadow: 0 4px 14px rgba(2,6,23,0.03);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
-.ce-course-card:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-.ce-course-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 0.75rem;
-}
-.ce-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0.75rem 0;
-}
+.ce-course-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(2,6,23,0.08); }
+
+.ce-course-title { font-size:18px; font-weight:700; margin:0 0 8px 0; color: #0b1220; }
+.ce-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
 .ce-tag {
-  background: #dcfce7;
-  color: #047857;
-  font-size: 0.8rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.25rem;
+  background:#f3f4f6;
+  padding:6px 8px;
+  border-radius:8px;
+  font-size:13px;
+  color:#374151;
 }
-.ce-eligibility,
-.ce-description {
-  font-size: 0.875rem;
-  color: #4b5563;
-  margin-bottom: 0.75rem;
-}
-.ce-jobroles {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-.ce-jobrole {
-  background: #ffedd5;
-  color: #c2410c;
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.25rem;
-}
+.ce-eligibility { color:#6b7280; margin:6px 0; font-size:14px; }
+.ce-description { color:#374151; margin:6px 0 10px 0; font-size:14px; line-height:1.45; }
+.ce-spec { display:inline-block; background:#fff5f0; color:#c2410c; padding:6px 8px; border-radius:6px; margin-right:6px; font-size:13px; }
+
+/* footer actions inside card */
 .ce-card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: auto;
-  gap: 1rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:12px;
 }
-.ce-save-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.25rem;
-  transition: background-color 0.2s ease;
-}
-.ce-save-btn:hover {
-  background-color: rgba(249, 115, 22, 0.1);
-}
-.ce-save-icon {
-  transition: color 0.2s ease;
-}
-.ce-footer-actions {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-.ce-link {
-  color: #f97316;
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-decoration: none;
-}
-.ce-link:hover {
-  text-decoration: underline;
-}
-.ce-btn-apply {
-  background-color: #f97316;
-  color: #fff;
-  padding: 0.5rem 1.25rem;
-  border-radius: 0.375rem;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  font-size: 0.875rem;
-}
-.ce-btn-apply:hover {
-  background-color: #ea580c;
+.ce-save-btn { background:transparent; border:none; cursor:pointer; padding:6px; }
+.ce-save-icon { width:22px; height:22px; }
+
+.ce-footer-actions { display:flex; gap:8px; align-items:center; }
+.ce-link { background:transparent; border:none; color:#111827; cursor:pointer; font-weight:600; padding:8px 10px; border-radius:8px; }
+.ce-btn-apply { background:#eab308; color:#111827; padding:8px 12px; border-radius:10px; border:none; cursor:pointer; font-weight:600; }
+
+/* top institutes small layout (kept simple) */
+.ce-top-institutes img { object-fit:cover; }
+
+/* responsive tweaks */
+@media (max-width: 900px) {
+  .ce-search-right { display:none; } /* collapse stats on small screens */
+  .ce-sidebar { position: relative; top: auto; }
+  .ce-search-left { flex-direction: column; align-items: stretch; }
+  .ce-btn-orange { width: 100%; }
 }
 
-/* ==== Responsive Design ==== */
-@media (max-width: 1024px) {
-  .ce-main {
-    padding: 1rem;
-  }
-  .ce-sidebar {
-    width: 100%; /* Full width on tablets */
-    margin-bottom: 1.5rem;
-  }
-  .ce-searchbar {
-    padding: 0.75rem;
-  }
-  .ce-top-filters {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .ce-top-filters select {
-    width: 100%;
-  }
-  .ce-course-card {
-    min-height: 280px; /* Slightly smaller for tablets */
-  }
-  .ce-card-footer {
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: stretch;
-  }
-  .ce-footer-actions {
-    justify-content: space-between;
-  }
+/* Fix header hidden behind navbar */
+.course-explorer {
+  padding-top: 120px !important;
 }
 
-@media (max-width: 640px) {
-  .ce-title {
-    font-size: 1.25rem;
-  }
-  .ce-search-input {
-    padding: 0.5rem;
-    font-size: 0.8rem;
-  }
-  .ce-btn-orange {
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-  }
-  .ce-course-card {
-    padding: 1rem;
-    min-height: 260px;
-  }
-  .ce-course-title {
-    font-size: 1.1rem;
-  }
-  .ce-tags,
-  .ce-jobroles {
-    gap: 0.4rem;
-  }
-  .ce-tag,
-  .ce-jobrole {
-    font-size: 0.75rem;
-    padding: 0.2rem 0.6rem;
-  }
-  .ce-eligibility,
-  .ce-description {
-    font-size: 0.8rem;
-  }
-  .ce-link,
-  .ce-btn-apply {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.8rem;
-  }
-  .ce-save-icon {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
+.ce-header {
+  margin-bottom: 20px;
+  padding: 0;
+  text-align: center;
 }
 
-@media (max-width: 480px) {
-  .ce-main {
-    padding: 0.75rem;
-  }
-  .ce-sidebar {
-    padding: 1rem;
-  }
-  .ce-accordion-btn {
-    font-size: 0.85rem;
-    padding: 0.5rem 0;
-  }
-  .ce-accordion-options label {
-    font-size: 0.8rem;
-  }
-  .ce-footer-actions {
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: stretch;
-  }
-  .ce-link,
-  .ce-btn-apply {
-    width: 100%;
-    text-align: center;
-  }
+.ce-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  padding: 0;
 }
 
-/* ==== Save Icon Styling (Bookmark Style) ==== */
-.ce-save-icon-wrapper {
-  background: white;
-  border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.25s ease;
-}
-
-.ce-save-icon-wrapper:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(249, 115, 22, 0.2);
-}
-
-.ce-save-icon-wrapper.saved {
-  background: #fff7ed;
-  box-shadow: 0 0 0 2px #f97316 inset;
-}
-
-.ce-save-icon {
-  width: 22px;
-  height: 22px;
-  transition: fill 0.3s ease, stroke 0.3s ease;
+.ce-subtitle {
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 14px;
 }
