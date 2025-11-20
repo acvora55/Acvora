@@ -1,45 +1,46 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 
+const colleges = [
+  { 
+    title: "VIT Vellore Institute of Technology", 
+    image: "/Vit.jpeg",
+    location: "Vellore, Tamil Nadu",
+    website: "https://vit.ac.in",
+  },
+  { 
+    title: "IIT Delhi", 
+    image: "/Iit-Delhi.jpeg",
+    location: "Delhi",
+    website: "https://home.iitd.ac.in/",
+  },
+  { 
+    title: "BITS Pilani", 
+    image: "/Bits-Pilani.jpeg",
+    location: "Hyderabad, Telangana",
+    website: "https://www.bits-pilani.ac.in/hyderabad/",
+  },
+  { 
+    title: "IIT Bombay", 
+    image: "/Iit-Bombay.jpeg",
+    location: "Mumbai, Maharashtra",
+    website: "https://www.iitb.ac.in/",
+  },
+  { 
+    title: "IISc Bangalore", 
+    image: "/Iisc-Bangalore.jpeg",
+    location: "Bangalore, Karnataka",
+    website: "https://iisc.ac.in/",
+  },
+  { 
+    title: "Jawaharlal Nehru University", 
+    image: "/Jnu.jpeg",
+    location: "New Delhi",
+    website: "https://www.jnu.ac.in/",
+  }
+];
+
 export default function TopCollegesAndUniversities() {
-  const colleges = [
-    { 
-      title: "VIT Vellore Institute of Technology", 
-      image: "/Vit.jpeg",
-      location: "Vellore, Tamil Nadu",
-      website: "https://vit.ac.in",
-    },
-    { 
-      title: "IIT Delhi", 
-      image: "/Iit-Delhi.jpeg",
-      location: "Delhi",
-      website: "https://home.iitd.ac.in/",
-    },
-    { 
-      title: "BITS Pilani", 
-      image: "/Bits-Pilani.jpeg",
-      location: "Hyderabad, Telangana",
-      website: "https://www.bits-pilani.ac.in/hyderabad/",
-    },
-    { 
-      title: "IIT Bombay", 
-      image: "/Iit-Bombay.jpeg",
-      location: "Mumbai, Maharashtra",
-      website: "https://www.iitb.ac.in/",
-    },
-    { 
-      title: "IISc Bangalore", 
-      image: "/Iisc-Bangalore.jpeg",
-      location: "Bangalore, Karnataka",
-      website: "https://iisc.ac.in/",
-    },
-    { 
-      title: "Jawaharlal Nehru University", 
-      image: "/Jnu.jpeg",
-      location: "New Delhi",
-      website: "https://www.jnu.ac.in/",
-    }
-  ];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(3);
   const [isTransitioning, setIsTransitioning] = useState(true);
@@ -59,14 +60,7 @@ export default function TopCollegesAndUniversities() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNextSlide();
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [slidesToShow]);
-
-  const handleNextSlide = () => {
+  const handleNextSlide = useCallback(() => {
     setIsTransitioning(true);
     setCurrentSlide(prev => {
       if (prev >= colleges.length) {
@@ -79,22 +73,14 @@ export default function TopCollegesAndUniversities() {
       }
       return prev + 1;
     });
-  };
+  }, []);
 
-  const handlePrevSlide = () => {
-    setIsTransitioning(true);
-    setCurrentSlide(prev => {
-      if (prev <= 0) {
-        // After a brief pause, reset to end without animation
-        setTimeout(() => {
-          setIsTransitioning(false);
-          setCurrentSlide(colleges.length);
-        }, 50);
-        return prev - 1;
-      }
-      return prev - 1;
-    });
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNextSlide();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [slidesToShow, handleNextSlide]);
 
   const transformValue = `translateX(-${currentSlide * (100 / slidesToShow)}%)`;
   const transitionStyle = isTransitioning ? { transition: "transform 0.5s ease-in-out" } : { transition: "none" };
@@ -178,7 +164,7 @@ export default function TopCollegesAndUniversities() {
         </div>
 
         {/* Slide indicators - Hidden */}
-        <div className="flex justify-center mt-4 hidden">
+        <div className="hidden md:flex justify-center mt-4">
           {colleges.map((_, index) => (
             <button
               key={index}
