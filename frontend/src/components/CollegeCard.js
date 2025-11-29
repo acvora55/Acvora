@@ -7,6 +7,10 @@ const CollegeCard = ({ university }) => {
 
   if (!university) return null; 
 
+  const handleCounsellingClick = () => {
+    navigate('/counselling');
+  };
+
  return (
     <div className="college-card">
       <div className="college-image-section">
@@ -56,7 +60,7 @@ const CollegeCard = ({ university }) => {
         </div>
 
         <div className="card-buttons">
-          <button className="counselling-btn">Get Counselling</button>
+          <button className="counselling-btn" onClick={handleCounsellingClick}>Get Counselling</button>
           <button
             className="explore-btn"
             onClick={() => navigate(`/university-page/${university._id}`)}
