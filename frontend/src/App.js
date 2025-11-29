@@ -30,7 +30,6 @@ import CourseRegister from "./Pages/CourseRegister";
 import MyProfile from "./Pages/MyProfile";
 import CoursePage from "./Pages/CoursePage";
 import SavedScholarships from "./Pages/SavedScholarships";
-import MySavedExams from "./Pages/MySavedExams";
 
 // Footer Pages
 import CollegeReview from './FooterPages/topExam/CollegeReview';
@@ -86,7 +85,6 @@ function App() {
         <Route path="/course" element={<MySavedCourses />} /> {/* ✅ Changed from /my-courses to /course to match Navbar */}
 
         <Route path="/saved-scholarships" element={<SavedScholarships />} />
-        <Route path="/mysavedexams" element={<MySavedExams />} />
 
         {/* University & Dashboard Routes */}
         <Route path="/university-dashboard/:id" element={<UniversityDashboard />} />

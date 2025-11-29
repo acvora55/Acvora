@@ -1,4 +1,3 @@
-// index.js (updated)
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -24,6 +23,7 @@ import scholarshipRoutes from "./routes/scholarshipRoutes.js";
 import signupRoutes from "./routes/signup.js";
 import instituteRoutes from "./routes/instituteRoutes.js";
 import profileRoutes from "./routes/profile.js";
+// ✅ New import for saved courses routes
 import savedCoursesRoutes from "./routes/savedCourses.js";
 import savedScholarshipsRoutes from "./routes/savedScholarships.js";
 import counsellingRoutes from "./routes/counselling.js";
@@ -38,25 +38,28 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
-/* ------------------------ CORS (allowlist) ------------------------ */
+/* ------------------------ CORS (FIXED) ------------------------ */
 const ALLOWED_ORIGINS = [
   "http://localhost:3000",
   "https://acvora-theta.vercel.app",
   "https://acvora-git-main-acvoras-projects.vercel.app",
   "https://acvora-h45fy0xph-acvoras-projects.vercel.app",
-  "https://acvora-g3qlp8vsi-acvoras-projects.vercel.app",
-  "https://acvora-07fo.onrender.com" // added your deployed API host so frontend can call it
+  "https://acvora-g3qlp8vsi-acvoras-projects.vercel.app"
 ];
 
-// Middleware: CORS with dynamic origin check
+
+
+
+// ✅ must be above express.json and all routes
 app.use(
   cors({
     origin: (origin, callback) => {
-      // allow requests with no origin (like mobile apps, curl, server-to-server)
-      if (!origin) return callback(null, true);
-      if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
-      console.warn("❌ Blocked by CORS:", origin);
-      return callback(new Error("Not allowed by CORS"), false);
+      if (!origin || ALLOWED_ORIGINS.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.warn("❌ Blocked by CORS:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
@@ -64,20 +67,22 @@ app.use(
   })
 );
 
-// Handle preflight requests for all routes
+// Handle preflight requests
 app.options("*", cors());
 
-/* ------------------------ Body parsers ------------------------ */
+// ✅ Parse JSON and URL-encoded data after CORS setup
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
-/* ------------------------ Ensure local uploads folder exists ------------------------ */
+// ✅ Ensure uploads folder exists (for local file storage)
 if (!fs.existsSync("uploads")) {
-  fs.mkdirSync("uploads", { recursive: true });
+  fs.mkdirSync("uploads");
 }
+
+// ✅ Serve uploaded files publicly (e.g. course images)
 app.use("/uploads", express.static("uploads"));
 
-/* ------------------------ Multer + Cloudinary storage ------------------------ */
+/* ------------------------ Multer + Cloudinary ------------------------ */
 const storage = new CloudinaryStorage({
   cloudinary,
   params: async () => ({
@@ -87,10 +92,11 @@ const storage = new CloudinaryStorage({
 });
 const upload = multer({ storage });
 
-/* ------------------------ MongoDB connection ------------------------ */
+/* ------------------------ Mongo connection ------------------------ */
 const mongoURI = process.env.MONGO_URI;
+
 if (!mongoURI) {
-  console.error("❌ MONGO_URI not found in environment. Aborting.");
+  console.error("❌ MONGO_URI not found in .env");
   process.exit(1);
 }
 
@@ -102,11 +108,12 @@ mongoose
   })
   .then(() => console.log("✅ Connected to MongoDB Atlas"))
   .catch((err) => {
-    console.error("❌ MongoDB connection error:", err.message);
+    console.error("❌ MongoDB Atlas connection error:", err.message);
     process.exit(1);
   });
 
-/* ------------------------ Small inline Schemas/Models ------------------------ */
+
+/* ------------------------ Registration Schema ------------------------ */
 const registrationSchema = new mongoose.Schema({
   name: { type: String, required: true },
   mobileNumber: { type: String, required: true },
@@ -115,6 +122,7 @@ const registrationSchema = new mongoose.Schema({
 });
 const Registration = mongoose.model("Registration", registrationSchema);
 
+/* ------------------------ News Schema ------------------------ */
 const newsSchema = new mongoose.Schema({
   universityId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -129,6 +137,7 @@ const newsSchema = new mongoose.Schema({
 });
 const News = mongoose.model("News", newsSchema);
 
+/* ------------------------ Student Schema ------------------------ */
 const studentSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
@@ -172,7 +181,7 @@ const studentSchema = new mongoose.Schema({
 });
 const Student = mongoose.model("Student", studentSchema);
 
-/* ------------------------ Inline Routes ------------------------ */
+/* ------------------------ Routes (inline) ------------------------ */
 app.post("/register", async (req, res) => {
   try {
     const { name, mobileNumber, location } = req.body || {};
@@ -185,26 +194,33 @@ app.post("/register", async (req, res) => {
 
     const reg = new Registration({ name, mobileNumber, location });
     await reg.save();
-    return res.status(201).json({ success: true, message: "Registration successful", reg });
+    return res
+      .status(201)
+      .json({ success: true, message: "Registration successful", reg });
   } catch (err) {
     console.error("Error in /register:", err);
-    return res.status(500).json({ success: false, message: "Registration failed", error: err.message });
+    return res
+      .status(500)
+      .json({ success: false, message: "Registration failed", error: err.message });
   }
 });
 
 app.post("/api/university-registration", upload.any(), async (req, res) => {
   try {
     console.log("📥 Incoming body:", req.body);
-    console.log("📂 Incoming files:", req.files?.map(f => ({ field: f.fieldname, url: f.path })) || []);
+    console.log("📂 Incoming files:", req.files?.map(f => ({ field: f.fieldname, url: f.path })));
 
     if (req.body.facilities) {
-      try { req.body.facilities = JSON.parse(req.body.facilities); } catch { req.body.facilities = []; }
+      try { req.body.facilities = JSON.parse(req.body.facilities); }
+      catch { req.body.facilities = []; }
     }
     if (req.body.branches) {
-      try { req.body.branches = JSON.parse(req.body.branches); } catch { req.body.branches = []; }
+      try { req.body.branches = JSON.parse(req.body.branches); }
+      catch { req.body.branches = []; }
     }
 
-    const getFiles = (field) => req.files?.filter((f) => f.fieldname === field).map((f) => f.path) || [];
+    const getFiles = (field) =>
+      req.files?.filter((f) => f.fieldname === field).map((f) => f.path) || [];
 
     const newUniversity = new UniversityRegistration({
       ...req.body,
@@ -226,7 +242,10 @@ app.post("/api/university-registration", upload.any(), async (req, res) => {
 
     await newUniversity.save();
 
-    res.status(201).json({ success: true, data: newUniversity });
+    res.status(201).json({
+      success: true,
+      data: newUniversity,
+    });
   } catch (err) {
     console.error("❌ Error registering university:", err);
     res.status(500).json({ success: false, message: "Server error" });
@@ -320,12 +339,28 @@ app.post("/api/students", async (req, res) => {
     const { name, email, university, status, details, createdAt, updatedAt } = req.body;
 
     if (!name || !email || !university || !details) {
-      return res.status(400).json({ success: false, message: "Name, email, university, and details are required" });
+      return res.status(400).json({
+        success: false,
+        message: "Name, email, university, and details are required",
+      });
     }
 
-    const newStudent = new Student({ name, email, university, status, details, createdAt, updatedAt });
+    const newStudent = new Student({
+      name,
+      email,
+      university,
+      status,
+      details,
+      createdAt,
+      updatedAt,
+    });
+
     await newStudent.save();
-    res.status(201).json({ success: true, message: "Student added successfully", data: newStudent });
+    res.status(201).json({
+      success: true,
+      message: "Student added successfully",
+      data: newStudent,
+    });
   } catch (err) {
     console.error("❌ Error adding student:", err);
     res.status(500).json({ success: false, message: "Server error", error: err.message });
@@ -346,13 +381,18 @@ app.put("/api/students/:id", async (req, res) => {
       return res.status(404).json({ success: false, message: "Student not found" });
     }
 
-    res.json({ success: true, message: "Student updated successfully", data: updatedStudent });
+    res.json({
+      success: true,
+      message: "Student updated successfully",
+      data: updatedStudent,
+    });
   } catch (err) {
     console.error("❌ Error updating student:", err);
     res.status(500).json({ success: false, message: "Server error", error: err.message });
   }
 });
 
+// Get all students
 app.get("/api/students", async (req, res) => {
   try {
     const students = await Student.find();
@@ -363,6 +403,7 @@ app.get("/api/students", async (req, res) => {
   }
 });
 
+// Delete student
 app.delete("/api/students/:id", async (req, res) => {
   try {
     const deleted = await Student.findByIdAndDelete(req.params.id);
@@ -376,6 +417,7 @@ app.delete("/api/students/:id", async (req, res) => {
   }
 });
 
+// ✅ Recent Applications (last 5 students)
 app.get("/api/students/recent", async (req, res) => {
   try {
     const recent = await Student.find().sort({ createdAt: -1 }).limit(5);
@@ -391,82 +433,47 @@ app.get("/api/students/stats", async (req, res) => {
     const now = new Date();
     const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
 
-    const applicationsThisMonth = await Student.countDocuments({ createdAt: { $gte: startOfMonth } });
+    const applicationsThisMonth = await Student.countDocuments({
+      createdAt: { $gte: startOfMonth },
+    });
+
     const confirmedAdmissions = await Student.countDocuments({ status: "Approved" });
     const pendingApplications = await Student.countDocuments({ status: "Pending" });
+
+    // Example commission logic (₹500 per confirmed admission)
     const commissionEarned = confirmedAdmissions * 500;
 
-    res.json({ applicationsThisMonth, confirmedAdmissions, commissionEarned, pendingApplications });
+    res.json({
+      applicationsThisMonth,
+      confirmedAdmissions,
+      commissionEarned,
+      pendingApplications, // 👈 renamed here
+    });
   } catch (err) {
     console.error("❌ Error fetching stats:", err);
     res.status(500).json({ error: "Server error" });
   }
 });
 
-/* ------------------------ PDF generator helper ------------------------ */
-function generateStudentPdf(student) {
-  return new Promise((resolve, reject) => {
-    try {
-      const doc = new PDFDocument({ size: "A4", margin: 50 });
-      const buffers = [];
-      doc.on("data", (chunk) => buffers.push(chunk));
-      doc.on("end", () => resolve(Buffer.concat(buffers)));
-
-      // Header
-      doc.fontSize(20).text("Student Application", { align: "center" });
-      doc.moveDown();
-
-      // Basic info
-      doc.fontSize(12).text(`Name: ${student.name}`);
-      doc.text(`Email: ${student.email}`);
-      doc.text(`University: ${student.university}`);
-      doc.text(`Status: ${student.status}`);
-      doc.moveDown();
-
-      // Details (if present)
-      if (student.details) {
-        doc.fontSize(14).text("Details:");
-        doc.fontSize(12);
-        Object.entries(student.details).forEach(([key, value]) => {
-          if (Array.isArray(value)) {
-            doc.text(`${key}: ${value.join(", ")}`);
-          } else if (typeof value === "object" && value !== null) {
-            doc.text(`${key}:`);
-            Object.entries(value).forEach(([k, v]) => doc.text(`  ${k}: ${v}`));
-          } else {
-            doc.text(`${key}: ${value}`);
-          }
-        });
-      }
-
-      doc.moveDown();
-      doc.fontSize(10).text(`Generated on: ${new Date().toLocaleString()}`, { align: "right" });
-
-      doc.end();
-    } catch (err) {
-      reject(err);
-    }
-  });
-}
-
+// example
 app.get("/api/students/:id/pdf", async (req, res) => {
   try {
     const student = await Student.findById(req.params.id);
     if (!student) return res.status(404).send("Student not found");
 
-    const pdfBuffer = await generateStudentPdf(student);
+    // generate PDF dynamically
+    const pdf = generateStudentPdf(student); // <- you need a function here
     res.set({
       "Content-Type": "application/pdf",
       "Content-Disposition": `attachment; filename="application_${student._id}.pdf"`,
     });
-    res.send(pdfBuffer);
+    res.send(pdf);
   } catch (err) {
-    console.error("Error generating PDF:", err);
     res.status(500).send("Error generating PDF");
   }
 });
 
-/* ------------------------ Mount external routers ------------------------ */
+/* ------------------------ Mount Routers ------------------------ */
 app.use("/api/signup", signupRoutes);
 app.use("/api/universities", universityRoutes);
 app.use("/api/universities", uploadCourseRoutes);
@@ -476,8 +483,9 @@ app.use("/api/recruiters", recruitersRoutes);
 app.use("/api/universities", placementsRoutes);
 app.use("/api/universities", galleryRoutes);
 app.use("/api/courses", courseRoutes);
-app.use("/api/exams", examRoutes); // <-- exams router mount (ensure examRoutes defines save-exam, my-exams, delete-exam)
+app.use("/api/exams", examRoutes);
 app.use("/api/scholarships", scholarshipRoutes);
+app.use("/api/universities", scholarshipRoutes);
 app.use("/api/institutes", instituteRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/savedCourses", savedCoursesRoutes);
@@ -489,50 +497,16 @@ app.get("/api/health", (req, res) => {
   res.json({ success: true, message: "Server is running" });
 });
 
-/* ------------------------ Helper: list registered routes for debugging ------------------------ */
-function listRoutes() {
-  try {
-    const routes = [];
-    app._router.stack.forEach((middleware) => {
-      if (middleware.route) {
-        // routes registered directly on the app
-        routes.push(middleware.route.path);
-      } else if (middleware.name === "router" && middleware.handle && middleware.handle.stack) {
-        // router middleware
-        middleware.handle.stack.forEach((handler) => {
-          const route = handler.route;
-          if (route) {
-            routes.push(route.path ? `${middleware.regexp?.toString()?.includes("api") ? "" : ""}${route.path}` : "<unknown>");
-          }
-        });
-      }
-    });
-    console.log("📚 Registered routes (rough):", routes.slice(0, 200));
-  } catch (err) {
-    console.warn("Could not list routes:", err);
-  }
-}
-
-/* ------------------------ Global error handler ------------------------ */
+/* ------------------------ Error handler ------------------------ */
 app.use((err, req, res, next) => {
   console.error("Unhandled error:", err);
-  if (res.headersSent) return next(err);
-  res.status(500).json({ success: false, error: err.message || "Internal server error" });
+  res.status(500).json({ success: false, error: "Internal server error" });
 });
 
 /* ------------------------ Start server ------------------------ */
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
+  console.log('Database connected:');
   console.log("Health check available at /api/health");
-  listRoutes();
-});
-
-/* ------------------------ Graceful shutdown handlers ------------------------ */
-process.on("unhandledRejection", (reason) => {
-  console.error("Unhandled Rejection:", reason);
-});
-process.on("uncaughtException", (err) => {
-  console.error("Uncaught Exception:", err);
-  // optional: process.exit(1);
 });
